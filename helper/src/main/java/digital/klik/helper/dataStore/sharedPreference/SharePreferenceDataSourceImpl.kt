@@ -3,7 +3,7 @@ package digital.klik.helper.dataStore.sharedPreference
 import android.content.Context
 import android.content.SharedPreferences
 import digital.klik.helper.dataStore.sharedPreference.valueLoader.*
-import digital.klik.helper.exception.SharedPreferenceException
+import digital.klik.helper.dataStore.sharedPreference.exception.SharedPreferenceException
 
 @Suppress("unused", "MemberVisibilityCanBePrivate")
 class SharePreferenceDataSourceImpl(context: Context, mode: Int, preferenceName: String):
@@ -32,7 +32,9 @@ class SharePreferenceDataSourceImpl(context: Context, mode: Int, preferenceName:
                     editor.putStringSet(key, value as Set<String>)
                 }
             }
-            else -> throw SharedPreferenceException("Unsupported type for value $value")
+            else -> throw SharedPreferenceException(
+                "Unsupported type for value $value"
+            )
         }
         editor.apply()
     }

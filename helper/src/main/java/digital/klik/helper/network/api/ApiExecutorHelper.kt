@@ -1,9 +1,9 @@
 package digital.klik.helper.network.api
 
 import digital.klik.helper.Result
-import digital.klik.helper.exception.ApiException
+import digital.klik.helper.network.exception.ApiException
 import digital.klik.helper.exception.AppException
-import digital.klik.helper.exception.ConnectException
+import digital.klik.helper.network.exception.ConnectException
 import digital.klik.helper.exception.UnknownException
 import digital.klik.helper.network.constant.ErrorMessage
 import digital.klik.helper.network.constant.HttpStatus
@@ -23,11 +23,17 @@ class ApiExecutorHelper {
                 val response = throwable.response()
                 val errorBody = response?.errorBody()?.string() ?: ""
                 val httpStatus = HttpStatus.from(throwable.code())
-                ApiException(httpStatus, errorBody)
+                ApiException(
+                    httpStatus,
+                    errorBody
+                )
             }
 
             is SocketTimeoutException,
-            is IOException -> ConnectException(ErrorMessage.CONNECTION_ERROR.message, throwable)
+            is IOException -> ConnectException(
+                ErrorMessage.CONNECTION_ERROR.message,
+                throwable
+            )
             else -> UnknownException(throwable.message, throwable)
         }
     }

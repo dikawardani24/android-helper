@@ -1,4 +1,6 @@
-package digital.klik.helper.exception
+package digital.klik.helper.common.exception
+
+import digital.klik.helper.exception.AppException
 
 @Suppress("unused")
 class DateFormatException : AppException {

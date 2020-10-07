@@ -1,4 +1,6 @@
-package digital.klik.helper.exception
+package digital.klik.helper.dataStore.sharedPreference.exception
+
+import digital.klik.helper.exception.AppException
 
 @Suppress("unused")
 class SharedPreferenceException : AppException {

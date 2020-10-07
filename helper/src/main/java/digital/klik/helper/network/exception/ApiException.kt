@@ -1,5 +1,6 @@
-package digital.klik.helper.exception
+package digital.klik.helper.network.exception
 
+import digital.klik.helper.exception.AppException
 import digital.klik.helper.network.constant.HttpStatus
 
 @Suppress("unused")
