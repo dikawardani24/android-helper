@@ -2,6 +2,7 @@ package digital.klik.helper.common
 
 import digital.klik.helper.common.constant.Pattern
 import digital.klik.helper.common.exception.DateFormatException
+import digital.klik.helper.common.model.Time
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -136,4 +137,21 @@ object DateHelper {
         return minOrPlusMonth(date, howManyMonths)
     }
 
+    fun todayCalendar(): Calendar {
+        return Calendar.getInstance()
+    }
+
+    fun todayDate(): Date {
+        return todayCalendar().time
+    }
+
+    fun currentTime(): Time {
+        val todayCalendar = todayCalendar()
+        return Time(
+            hour = todayCalendar.get(Calendar.HOUR),
+            minute = todayCalendar.get(Calendar.MINUTE),
+            second = todayCalendar.get(Calendar.SECOND),
+            milliSecond = todayCalendar.get(Calendar.MILLISECOND)
+        )
+    }
 }

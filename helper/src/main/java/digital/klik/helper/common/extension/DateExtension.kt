@@ -1,5 +1,6 @@
 package digital.klik.helper.common.extension
 
+import digital.klik.helper.common.DateHelper
 import java.util.*
 
 fun Date.format(pattern: String, locale: Locale): String {
