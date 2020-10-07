@@ -2,8 +2,8 @@ package digital.klik.helper
 
 import androidx.multidex.MultiDex
 import androidx.multidex.MultiDexApplication
-import digital.klik.helper.dataStore.sharedPreference.SharePreferenceDataSource
-import digital.klik.helper.dataStore.sharedPreference.SharePreferenceDataSourceImpl
+import digital.klik.helper.sharedPreference.SharePreferenceDataSource
+import digital.klik.helper.sharedPreference.SharePreferenceDataSourceImpl
 
 class KlikDigitalApplication : MultiDexApplication() {
 
