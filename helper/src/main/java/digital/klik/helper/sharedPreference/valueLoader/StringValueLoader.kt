@@ -2,19 +2,19 @@ package digital.klik.helper.sharedPreference.valueLoader
 
 import android.content.SharedPreferences
 
-class StringValueLoader(sharedPreferences: SharedPreferences) : BaseValueLoader<String>(sharedPreferences) {
+class StringValueLoader(sharedPreferences: SharedPreferences, key: String) : BaseValueLoader<String>(sharedPreferences, key) {
 
-    override fun get(key: String, default: String?): String? {
+    override fun get(default: String?): String? {
         return sharedPreferences.getString(key, default)
     }
 
-    override fun getOrEmpty(key: String): String {
-        val foundValue = get(key, "")
+    override fun getOrEmpty(): String {
+        val foundValue = get("")
         return foundValue ?: ""    }
 
-    override fun getOrThrow(key: String): String {
-        val foundValue = get(key, null)
-        return foundValue ?: throw produceErrorNoData(key)
+    override fun getOrThrow(): String {
+        val foundValue = get(null)
+        return foundValue ?: throw produceErrorNoData()
     }
 
 }

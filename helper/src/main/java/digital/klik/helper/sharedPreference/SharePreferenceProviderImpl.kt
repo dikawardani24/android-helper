@@ -39,23 +39,13 @@ class SharePreferenceProviderImpl(context: Context, mode: Int, preferenceName: S
         editor.apply()
     }
 
-    override fun getStringValueLoader(): ValueLoader<String> = StringValueLoader(sharedPreferences)
+    override fun getStringValueLoader(key: String): ValueLoader<String> = StringValueLoader(sharedPreferences, key)
 
-    override fun getIntValueLoader(): ValueLoader<Int> = IntegerValueLoader(sharedPreferences)
+    override fun getIntValueLoader(key: String): ValueLoader<Int> = IntegerValueLoader(sharedPreferences, key)
 
-    override fun getLongValueLoader(): ValueLoader<Long> = LongValueLoader(sharedPreferences)
+    override fun getLongValueLoader(key: String): ValueLoader<Long> = LongValueLoader(sharedPreferences, key)
 
-    override fun getFloatValueLoader(): ValueLoader<Float> = FloatValueLoader(sharedPreferences)
+    override fun getFloatValueLoader(key: String): ValueLoader<Float> = FloatValueLoader(sharedPreferences, key)
 
-    override fun getStringSetValueLoader(): ValueLoader<Set<String>> = StringSetValueLoader(sharedPreferences)
-
-    override fun getString(key: String, default: String?): String? = getStringValueLoader().get(key, default)
-
-    override fun getInt(key: String, default: Int?): Int? = getIntValueLoader().get(key, default)
-
-    override fun getLong(key: String, default: Long?): Long? = getLongValueLoader().get(key, default)
-
-    override fun getFloat(key: String, default: Float?): Float? = getFloatValueLoader().get(key, default)
-
-    override fun getStringSet(key: String, default: Set<String>?): Set<String>? = getStringSetValueLoader().get(key, default)
+    override fun getStringSetValueLoader(key: String): ValueLoader<Set<String>> = StringSetValueLoader(sharedPreferences, key)
 }

@@ -1,7 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-apply plugin: 'digital.wup.android-maven-publish'
 
 android {
     compileSdkVersion 30
@@ -62,22 +61,6 @@ dependencies {
     def rxJavaVersion = "2.1.1"
     implementation "io.reactivex.rxjava2:rxandroid:$rxJavaVersion"
     implementation "io.reactivex.rxjava2:rxjava:$rxJavaVersion"
+    implementation "org.jetbrains.kotlin:kotlin-reflect:1.3.72"
 
-}
-
-publishing {
-    publications {
-        mavenAar(MavenPublication) {
-            groupId 'digital.klik'
-            artifactId 'helper'
-            version '1.0.0'
-            from components.android
-        }
-    }
-
-    repositories {
-        maven {
-            url "$buildDir/releases"
-        }
-    }
 }

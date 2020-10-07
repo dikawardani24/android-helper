@@ -2,9 +2,9 @@ package digital.klik.helper.sharedPreference.valueLoader
 
 import android.content.SharedPreferences
 
-class LongValueLoader(sharedPreferences: SharedPreferences) : NumberValueLoader<Long>(sharedPreferences) {
+class LongValueLoader(sharedPreferences: SharedPreferences, key: String) : NumberValueLoader<Long>(sharedPreferences, key) {
 
-    override fun get(key: String, default: Long?): Long? {
+    override fun get(default: Long?): Long? {
         val defaultToReturn = default ?: invalidValue.toLong()
 
         val foundValue = sharedPreferences.getLong(key, defaultToReturn)

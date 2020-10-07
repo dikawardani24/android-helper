@@ -8,23 +8,13 @@ interface SharePreferenceProvider {
 
     fun store(key: String, value: Any)
 
-    fun getStringValueLoader(): ValueLoader<String>
+    fun getStringValueLoader(key: String): ValueLoader<String>
 
-    fun getIntValueLoader(): ValueLoader<Int>
+    fun getIntValueLoader(key: String): ValueLoader<Int>
 
-    fun getLongValueLoader(): ValueLoader<Long>
+    fun getLongValueLoader(key: String): ValueLoader<Long>
 
-    fun getFloatValueLoader(): ValueLoader<Float>
+    fun getFloatValueLoader(key: String): ValueLoader<Float>
 
-    fun getStringSetValueLoader(): ValueLoader<Set<String>>
-
-    fun getString(key: String, default: String?): String?
-
-    fun getInt(key: String, default: Int?): Int?
-
-    fun getLong(key: String, default: Long?): Long?
-
-    fun getFloat(key: String, default: Float?): Float?
-
-    fun getStringSet(key: String, default: Set<String>?): Set<String>?
+    fun getStringSetValueLoader(key: String): ValueLoader<Set<String>>
 }
