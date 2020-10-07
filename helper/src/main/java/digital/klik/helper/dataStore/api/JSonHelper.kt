@@ -2,11 +2,12 @@ package digital.klik.helper.dataStore.api
 
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import digital.klik.helper.common.constant.Pattern
 
 @Suppress("unused")
 object JSonHelper {
     val gson: Gson = GsonBuilder()
-        .setDateFormat(DateHelper.DATE_FULL_PATTERN)
+        .setDateFormat(Pattern.DATE_FULL.value)
         .disableHtmlEscaping()
         .create()
 
