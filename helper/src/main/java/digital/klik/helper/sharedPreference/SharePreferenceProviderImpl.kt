@@ -2,6 +2,7 @@ package digital.klik.helper.sharedPreference
 
 import android.content.Context
 import android.content.SharedPreferences
+import digital.klik.helper.common.InstanceHelper
 import digital.klik.helper.sharedPreference.valueLoader.*
 import digital.klik.helper.sharedPreference.exception.SharedPreferenceException
 
@@ -28,8 +29,8 @@ class SharePreferenceProviderImpl(context: Context, mode: Int, preferenceName: S
             is Float -> editor.putFloat(key, value)
             is Long -> editor.putLong(key, value)
             is Set<*> -> {
-                if (value.filterIsInstance(String::class.java).isNotEmpty()) {
-                    editor.putStringSet(key, value as Set<String>)
+                InstanceHelper.tryCast<Set<String>>(value) {
+                    editor.putStringSet(key, this)
                 }
             }
             else -> throw SharedPreferenceException(
