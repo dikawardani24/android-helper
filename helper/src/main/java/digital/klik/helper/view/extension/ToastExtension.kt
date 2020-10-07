@@ -1,4 +1,4 @@
-package digital.klik.helper.view
+package digital.klik.helper.view.extension
 
 import android.app.Activity
 import android.content.Context
@@ -28,7 +28,11 @@ fun Activity.showLongToast(message: String) {
 }
 
 fun Fragment.showToast(message: String, toastDuration: ToastDuration) {
-    showToast(requireContext(), message, toastDuration)
+    showToast(
+        requireContext(),
+        message,
+        toastDuration
+    )
 }
 
 fun Fragment.showShortToast(message: String) {

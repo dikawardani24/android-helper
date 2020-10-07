@@ -1,4 +1,4 @@
-package digital.klik.helper.view
+package digital.klik.helper.view.extension
 
 import android.view.View
 import com.google.android.material.snackbar.Snackbar
