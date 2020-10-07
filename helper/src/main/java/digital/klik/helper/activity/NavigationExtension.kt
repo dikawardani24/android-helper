@@ -3,19 +3,14 @@
 package digital.klik.helper.activity
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import digital.klik.helper.KlikDigitalApplication
 import digital.klik.helper.exception.AppException
+import digital.klik.helper.sharedPreference.SharePreferenceProvider
+import digital.klik.helper.sharedPreference.SharePreferenceProviderImpl
 import kotlin.reflect.KClass
 
-fun Activity.getApplicationContainer(): KlikDigitalApplication {
-    val app = application
-    if (app is KlikDigitalApplication) {
-        return app
-    } else {
-        throw AppException("The application container of ${app::class.simpleName} is not type of ${KlikDigitalApplication::class.simpleName}")
-    }
-}
 
 fun Activity.startOtherActivityForResult(kClass: KClass<*>, requestCode: Int, block: Intent.() -> Unit = {}) {
     val intent = Intent(this, kClass.java)
