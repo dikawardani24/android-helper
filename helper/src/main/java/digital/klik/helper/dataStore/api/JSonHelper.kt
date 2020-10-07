@@ -1,4 +1,4 @@
-package digital.klik.helper.network.api
+package digital.klik.helper.dataStore.api
 
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder

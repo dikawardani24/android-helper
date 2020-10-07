@@ -1,12 +1,12 @@
-package digital.klik.helper.network.api
+package digital.klik.helper.dataStore.api
 
 import digital.klik.helper.Result
-import digital.klik.helper.network.exception.ApiException
+import digital.klik.helper.dataStore.api.exception.ApiException
 import digital.klik.helper.exception.AppException
-import digital.klik.helper.network.exception.ConnectException
+import digital.klik.helper.dataStore.api.exception.ConnectException
 import digital.klik.helper.exception.UnknownException
-import digital.klik.helper.network.constant.ErrorMessage
-import digital.klik.helper.network.constant.HttpStatus
+import digital.klik.helper.dataStore.api.constant.ErrorMessage
+import digital.klik.helper.dataStore.api.constant.HttpStatus
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.observers.DisposableSingleObserver

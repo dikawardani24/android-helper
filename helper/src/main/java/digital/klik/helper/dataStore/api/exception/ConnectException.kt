@@ -1,4 +1,4 @@
-package digital.klik.helper.network.exception
+package digital.klik.helper.dataStore.api.exception
 
 import digital.klik.helper.exception.AppException
 

@@ -1,7 +1,7 @@
-package digital.klik.helper.network.exception
+package digital.klik.helper.dataStore.api.exception
 
 import digital.klik.helper.exception.AppException
-import digital.klik.helper.network.constant.HttpStatus
+import digital.klik.helper.dataStore.api.constant.HttpStatus
 
 @Suppress("unused")
 class ApiException : AppException {

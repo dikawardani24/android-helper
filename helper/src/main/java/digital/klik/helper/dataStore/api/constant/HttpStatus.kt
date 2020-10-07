@@ -1,4 +1,4 @@
-package digital.klik.helper.network.constant
+package digital.klik.helper.dataStore.api.constant
 
 @Suppress("unused")
 enum class HttpStatus(val code: Int, val description: String) {

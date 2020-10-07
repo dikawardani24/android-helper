@@ -1,4 +1,4 @@
-package digital.klik.helper.network.api
+package digital.klik.helper.dataStore.api
 
 import android.net.Uri
 import okhttp3.MediaType.Companion.toMediaType
