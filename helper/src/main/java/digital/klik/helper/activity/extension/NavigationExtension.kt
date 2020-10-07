@@ -1,14 +1,9 @@
 @file:Suppress("unused")
 
-package digital.klik.helper.activity
+package digital.klik.helper.activity.extension
 
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
-import digital.klik.helper.KlikDigitalApplication
-import digital.klik.helper.exception.AppException
-import digital.klik.helper.sharedPreference.SharePreferenceProvider
-import digital.klik.helper.sharedPreference.SharePreferenceProviderImpl
 import kotlin.reflect.KClass
 
 
