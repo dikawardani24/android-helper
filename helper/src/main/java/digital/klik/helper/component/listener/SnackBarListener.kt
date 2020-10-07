@@ -1,4 +1,4 @@
-package digital.klik.helper.view.listener
+package digital.klik.helper.component.listener
 
 import android.view.View
 

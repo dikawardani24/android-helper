@@ -1,4 +1,4 @@
-package digital.klik.helper.view.extension
+package digital.klik.helper.component.extension
 
 import android.text.Editable
 import android.text.TextWatcher

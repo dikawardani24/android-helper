@@ -5,7 +5,7 @@
  * Software distributed under the license .
  */
 
-package digital.klik.helper.view.custom.recyclerview
+package digital.klik.helper.component.custom.recyclerview
 
 import android.graphics.Rect
 import androidx.recyclerview.widget.RecyclerView

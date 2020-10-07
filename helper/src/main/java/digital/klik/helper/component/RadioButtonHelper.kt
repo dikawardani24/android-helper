@@ -1,4 +1,4 @@
-package digital.klik.helper.view
+package digital.klik.helper.component
 
 import android.app.Activity
 import android.widget.RadioButton

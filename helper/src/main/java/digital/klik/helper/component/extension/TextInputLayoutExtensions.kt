@@ -1,8 +1,8 @@
-package digital.klik.helper.view.extension
+package digital.klik.helper.component.extension
 
 import android.widget.EditText
 import com.google.android.material.textfield.TextInputLayout
-import digital.klik.helper.view.exception.ViewException
+import digital.klik.helper.component.exception.ViewException
 
 val TextInputLayout.requiredEditText: EditText
     get() = editText ?: throw ViewException("No EditText has been attached to current TextInputLayout")

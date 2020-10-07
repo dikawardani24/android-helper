@@ -1,10 +1,10 @@
-package digital.klik.helper.view.extension
+package digital.klik.helper.component.extension
 
 import android.app.Activity
 import android.content.Context
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import digital.klik.helper.view.constant.ToastDuration
+import digital.klik.helper.component.constant.ToastDuration
 
 fun showToast(context: Context, message: String, toastDuration: ToastDuration) {
     val duration = when(toastDuration) {

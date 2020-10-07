@@ -1,4 +1,4 @@
-package digital.klik.helper.view.constant
+package digital.klik.helper.component.constant
 
 enum class ToastDuration {
     SHORT,

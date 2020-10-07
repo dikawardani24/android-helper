@@ -1,4 +1,4 @@
-package digital.klik.helper.view.exception
+package digital.klik.helper.component.exception
 
 import digital.klik.helper.exception.AppException
 

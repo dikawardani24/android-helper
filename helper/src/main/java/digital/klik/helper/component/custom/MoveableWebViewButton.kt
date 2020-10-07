@@ -5,7 +5,7 @@
  * Software distributed under the license .
  */
 
-package digital.klik.helper.view.custom
+package digital.klik.helper.component.custom
 
 import android.annotation.TargetApi
 import android.content.Context

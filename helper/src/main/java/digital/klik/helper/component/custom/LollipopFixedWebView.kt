@@ -1,4 +1,4 @@
-package digital.klik.helper.view.custom
+package digital.klik.helper.component.custom
 
 import android.content.Context
 import android.content.res.Configuration

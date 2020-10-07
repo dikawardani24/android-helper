@@ -1,4 +1,4 @@
-package digital.klik.helper.view.config
+package digital.klik.helper.component.config
 
 data class SnackBarConfig(
     val actionTextColorResId: Int,

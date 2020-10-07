@@ -1,4 +1,4 @@
-package digital.klik.helper.view.extension
+package digital.klik.helper.component.extension
 
 import android.widget.ArrayAdapter
 import android.widget.Spinner

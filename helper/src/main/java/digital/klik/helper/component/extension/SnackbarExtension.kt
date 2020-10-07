@@ -1,10 +1,10 @@
-package digital.klik.helper.view.extension
+package digital.klik.helper.component.extension
 
 import android.view.View
 import com.google.android.material.snackbar.Snackbar
-import digital.klik.helper.view.config.SnackBarConfig
-import digital.klik.helper.view.constant.SnackBarDuration
-import digital.klik.helper.view.listener.SnackBarListener
+import digital.klik.helper.component.config.SnackBarConfig
+import digital.klik.helper.component.constant.SnackBarDuration
+import digital.klik.helper.component.listener.SnackBarListener
 
 fun showSnackBar(
     view: View,
