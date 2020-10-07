@@ -1,6 +1,7 @@
 package digital.klik.helper.dialog.extension
 
 import android.content.Context
+import androidx.fragment.app.Fragment
 import digital.klik.helper.common.DateHelper
 import digital.klik.helper.dialog.TimePickerDialogHelper
 import digital.klik.helper.dialog.listener.OnTimeSelectedListener
@@ -17,3 +18,16 @@ fun Context.showTimePickerDialog(
     use24HourView: Boolean = false,
     onTimeSelectedListener: (selectedTime: Time) -> Unit
 ) = TimePickerDialogHelper.showTimePickerDialog(this, defaultSelection, use24HourView, onTimeSelectedListener)
+
+
+fun Fragment.showTimePickerDialog(
+    defaultSelection: Time = DateHelper.currentTime(),
+    use24HourView: Boolean = false,
+    onTimeSelectedListener: OnTimeSelectedListener?
+) = TimePickerDialogHelper.showTimePickerDialog(requireContext(), defaultSelection, use24HourView, onTimeSelectedListener)
+
+fun Fragment.showTimePickerDialog(
+    defaultSelection: Time = DateHelper.currentTime(),
+    use24HourView: Boolean = false,
+    onTimeSelectedListener: (selectedTime: Time) -> Unit
+) = TimePickerDialogHelper.showTimePickerDialog(requireContext(), defaultSelection, use24HourView, onTimeSelectedListener)
