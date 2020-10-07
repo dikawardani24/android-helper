@@ -1,10 +1,3 @@
-/*
- * Copyright (c) 2020. The Axisnet Project.
- *
- * Licensed under XL Axiata Inc.
- * Software distributed under the license .
- */
-
 package digital.klik.helper.view.custom
 
 import android.content.Context
@@ -19,15 +12,15 @@ class LollipopFixedWebView : WebView {
         getFixedContext(
             context
         )
-    ) {}
+    )
+
     constructor(
         context: Context,
         attrs: AttributeSet?
     ) : super(
         getFixedContext(
             context
-        ), attrs) {
-    }
+        ), attrs)
 
     constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(
         getFixedContext(
@@ -35,8 +28,7 @@ class LollipopFixedWebView : WebView {
         ),
         attrs,
         defStyleAttr
-    ) {
-    }
+    )
 
     companion object {
         // To fix Android Lollipop WebView problem create a new configuration on that Android version only
