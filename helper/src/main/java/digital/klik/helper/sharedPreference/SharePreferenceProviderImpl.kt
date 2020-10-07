@@ -6,8 +6,8 @@ import digital.klik.helper.sharedPreference.valueLoader.*
 import digital.klik.helper.sharedPreference.exception.SharedPreferenceException
 
 @Suppress("unused", "MemberVisibilityCanBePrivate")
-class SharePreferenceDataSourceImpl(context: Context, mode: Int, preferenceName: String):
-    SharePreferenceDataSource {
+class SharePreferenceProviderImpl(context: Context, mode: Int, preferenceName: String):
+    SharePreferenceProvider {
     private val sharedPreferences: SharedPreferences =
         context.getSharedPreferences(preferenceName, mode)
 

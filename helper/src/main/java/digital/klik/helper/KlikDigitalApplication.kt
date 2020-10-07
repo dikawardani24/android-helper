@@ -1,9 +1,10 @@
 package digital.klik.helper
 
+import android.content.Context
 import androidx.multidex.MultiDex
 import androidx.multidex.MultiDexApplication
-import digital.klik.helper.sharedPreference.SharePreferenceDataSource
-import digital.klik.helper.sharedPreference.SharePreferenceDataSourceImpl
+import digital.klik.helper.sharedPreference.SharePreferenceProvider
+import digital.klik.helper.sharedPreference.SharePreferenceProviderImpl
 
 class KlikDigitalApplication : MultiDexApplication() {
 
@@ -12,10 +13,18 @@ class KlikDigitalApplication : MultiDexApplication() {
         MultiDex.install(this)
     }
 
-    fun getSharedPreferenceOpenHelper(preferenceName: String, mode: Int): SharePreferenceDataSource {
-        return SharePreferenceDataSourceImpl(
+    fun getSharedPreferenceProvider(preferenceName: String, mode: Int): SharePreferenceProvider {
+        return SharePreferenceProviderImpl(
             context = this,
             mode = mode,
+            preferenceName = preferenceName
+        )
+    }
+
+    fun getPrivateSharedPreferenceProvider(preferenceName: String): SharePreferenceProvider {
+        return SharePreferenceProviderImpl(
+            context = this,
+            mode = Context.MODE_PRIVATE,
             preferenceName = preferenceName
         )
     }

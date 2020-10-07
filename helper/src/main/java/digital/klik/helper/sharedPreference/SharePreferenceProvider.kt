@@ -2,7 +2,7 @@ package digital.klik.helper.sharedPreference
 
 import digital.klik.helper.sharedPreference.valueLoader.ValueLoader
 
-interface SharePreferenceDataSource {
+interface SharePreferenceProvider {
 
     fun remove(key: String)
 
