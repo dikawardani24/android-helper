@@ -1,4 +1,4 @@
-package digital.klik.helper.dataStore.room
+package digital.klik.helper.dataStore.room.converter
 
 import androidx.room.TypeConverter
 import java.util.*

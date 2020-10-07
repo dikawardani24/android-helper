@@ -2,7 +2,7 @@ package digital.klik.helper.dataStore.room
 
 import androidx.room.*
 
-interface BaseDao<T> {
+interface CrudDao<T> {
     @Insert(onConflict = OnConflictStrategy.ABORT)
     fun insert(entity: T): Long
 
