@@ -1,6 +1,6 @@
 package digital.klik.helper.security
 
-import digital.klik.helper.security.constant.Algorithm
+import digital.klik.helper.security.constant.HashingAlgorithm
 import digital.klik.helper.security.exception.SecurityException
 import digital.klik.helper.security.service.MessageEncryptionService
 import java.math.BigInteger
@@ -11,7 +11,7 @@ class MD5Encryption: MessageEncryptionService {
 
     override fun secure(data: String): String {
         return try {
-            val algorithm = Algorithm.MD5.value
+            val algorithm = HashingAlgorithm.MD5.value
             val messageDigest = MessageDigest.getInstance(algorithm)
             val offset = 0
             messageDigest.update(data.toByteArray(Charsets.UTF_8), offset, data.length)

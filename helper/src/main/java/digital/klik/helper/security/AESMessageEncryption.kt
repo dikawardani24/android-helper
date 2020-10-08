@@ -3,7 +3,7 @@ package digital.klik.helper.security
 import android.util.Base64
 import digital.klik.helper.security.constant.AesCipherTransformation
 import digital.klik.helper.security.constant.AesKeySize
-import digital.klik.helper.security.constant.Algorithm
+import digital.klik.helper.security.constant.EncryptionAlgorithm
 import digital.klik.helper.security.service.MessageDecryptionService
 import digital.klik.helper.security.service.MessageEncryptionService
 import javax.crypto.Cipher
@@ -11,7 +11,7 @@ import javax.crypto.KeyGenerator
 import javax.crypto.SecretKey
 
 class AESMessageEncryption: MessageEncryptionService, MessageDecryptionService {
-    private val algorithm = Algorithm.AES
+    private val algorithm = EncryptionAlgorithm.AES
     private var secretKey: SecretKey
     private var cipher = Cipher.getInstance(AesCipherTransformation.CBS_PKCS_5_PADDING.value)
 
