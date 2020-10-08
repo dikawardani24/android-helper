@@ -18,6 +18,7 @@ enum class AesKeySize(val size: Int, val round: Int) {
                 val matched = comparatorEquaility(aesKeySize)
                 if (matched) {
                     found = aesKeySize
+                    break
                 }
             }
 

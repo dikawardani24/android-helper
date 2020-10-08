@@ -14,6 +14,7 @@ enum class Algorithm(val value: String) {
             for (algorithm in values()) {
                 if (algorithm.value == algorithmString) {
                     found = algorithm
+                    break
                 }
             }
 

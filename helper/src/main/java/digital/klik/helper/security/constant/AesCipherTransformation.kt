@@ -9,6 +9,7 @@ enum class AesCipherTransformation(val value: String) {
             for (aesChiperTransformation in values()) {
                 if (transformationString == transformationString) {
                     found = aesChiperTransformation
+                    break
                 }
             }
 
