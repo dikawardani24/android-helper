@@ -5,10 +5,10 @@ import androidx.appcompat.app.AppCompatActivity
 
 abstract class BaseActivity : AppCompatActivity() {
 
-    abstract fun onCreateKDigi(savedInstanceState: Bundle?)
+    protected abstract fun kDigiOnCreate(savedInstanceState: Bundle?)
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    final override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        onCreateKDigi(savedInstanceState)
+        kDigiOnCreate(savedInstanceState)
     }
 }
