@@ -1,5 +1,7 @@
 package digital.klik.helper.common.extension
 
+import digital.klik.helper.common.NumberHelper
+
 fun Number.format(): String {
     return NumberHelper.format(this)
 }
