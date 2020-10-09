@@ -7,7 +7,7 @@ import java.math.BigInteger
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
 
-class MD5Encryption: HashingService<String> {
+class MD5MessageHashing: HashingService<String> {
 
     override fun secure(data: String): String {
         return try {
