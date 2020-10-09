@@ -1,4 +1,4 @@
-package digital.klik.helper.security.extension
+package digital.klik.helper.api.extension
 
 import android.app.Activity
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException

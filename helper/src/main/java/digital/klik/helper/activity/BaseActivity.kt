@@ -2,7 +2,7 @@ package digital.klik.helper.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import digital.klik.helper.security.extension.installProviderIfNeeded
+import digital.klik.helper.api.extension.installProviderIfNeeded
 
 abstract class BaseActivity : AppCompatActivity() {
 
