@@ -2,6 +2,7 @@ package digital.klik.helper.security.encryption.aes
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import digital.klik.helper.common.LoggerHelper
+import digital.klik.helper.common.extension.logDebug
 import digital.klik.helper.security.encryption.constant.EncryptionPadding
 import org.junit.Test
 
@@ -23,7 +24,7 @@ class AesEcbMessageEncryptionTest {
     fun encrypt() {
         val toEncrypt = "Dika Wardani"
         val encrypted = encryption.encrypt(toEncrypt)
-        LoggerHelper.debug(this, "To Encrypt: $toEncrypt, Encrypted: $encrypted")
+        logDebug("To Encrypt: $toEncrypt, Encrypted: $encrypted")
         assertTrue(toEncrypt != encrypted)
     }
 
@@ -31,7 +32,7 @@ class AesEcbMessageEncryptionTest {
     fun isMatched() {
         val toEncrypt = "Dika Wardani"
         val encrypted = encryption.encrypt(toEncrypt)
-        LoggerHelper.debug(this, "To Encrypt: $toEncrypt, Encrypted: $encrypted")
+        logDebug("To Encrypt: $toEncrypt, Encrypted: $encrypted")
         assertTrue(encryption.isMatched(encrypted, toEncrypt))
     }
 
@@ -40,7 +41,7 @@ class AesEcbMessageEncryptionTest {
         val toEncrypt = "Dika Wardani"
         val encrypted = encryption.encrypt(toEncrypt)
         val decrypted = encryption.decrypt(encrypted)
-        LoggerHelper.debug(this, "To Encrypt: $toEncrypt, Encrypted: $encrypted, Decrypted: $decrypted")
+        logDebug("To Encrypt: $toEncrypt, Encrypted: $encrypted, Decrypted: $decrypted")
         assertTrue(decrypted == toEncrypt)
     }
 }

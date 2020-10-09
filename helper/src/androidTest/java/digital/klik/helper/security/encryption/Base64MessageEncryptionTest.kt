@@ -2,6 +2,7 @@ package digital.klik.helper.security.encryption
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import digital.klik.helper.common.LoggerHelper
+import digital.klik.helper.common.extension.logDebug
 import org.junit.Assert.assertTrue
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -17,7 +18,7 @@ class Base64MessageEncryptionTest {
         val toEncrypt = "Dika Wardani \n Dona Doni"
         val encrypted = noSaltKeyEncryption.encrypt(toEncrypt)
 
-        LoggerHelper.debug(this, "secure => toEncrypted : $toEncrypt, encrypted: $encrypted")
+        logDebug("secure => toEncrypted : $toEncrypt, encrypted: $encrypted")
         assertTrue(toEncrypt != encrypted)
     }
 
@@ -25,7 +26,7 @@ class Base64MessageEncryptionTest {
     fun isMatched() {
         val toEncrypt = "Dika Wardani \n Dona Doni"
         val encrypted = noSaltKeyEncryption.encrypt(toEncrypt)
-        LoggerHelper.debug(this, "isMatched => toEncrypted : $toEncrypt, encrypted: $encrypted")
+        logDebug("isMatched => toEncrypted : $toEncrypt, encrypted: $encrypted")
 
         assertTrue(noSaltKeyEncryption.isMatched(encrypted, toEncrypt))
     }
@@ -36,8 +37,7 @@ class Base64MessageEncryptionTest {
         val encrypted = noSaltKeyEncryption.encrypt(toEncrypt)
         val decrypted = noSaltKeyEncryption.decrypt(encrypted)
 
-        LoggerHelper.debug(this, "decrypt => toEncrypted : $toEncrypt, encrypted: $encrypted, decrypted: $decrypted")
-
+        logDebug("decrypt => toEncrypted : $toEncrypt, encrypted: $encrypted, decrypted: $decrypted")
         assertTrue(decrypted == toEncrypt)
     }
 }
