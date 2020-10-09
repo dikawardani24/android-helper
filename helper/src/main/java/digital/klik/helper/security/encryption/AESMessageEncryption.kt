@@ -3,10 +3,12 @@ package digital.klik.helper.security.encryption
 import android.util.Base64
 import digital.klik.helper.common.LoggerHelper
 import digital.klik.helper.security.EncryptionService
-import digital.klik.helper.security.encryption.constant.*
+import digital.klik.helper.security.encryption.constant.AesKeySize
+import digital.klik.helper.security.encryption.constant.EncryptionAlgorithm
+import digital.klik.helper.security.encryption.constant.EncryptionMode
+import digital.klik.helper.security.encryption.constant.EncryptionPadding
 import digital.klik.helper.security.exception.SecurityException
 import javax.crypto.Cipher
-import javax.crypto.KeyGenerator
 import javax.crypto.SecretKey
 import javax.crypto.spec.SecretKeySpec
 
