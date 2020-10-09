@@ -7,7 +7,7 @@ import digital.klik.helper.security.exception.SecurityException
 class Base64MessageEncryption :
     EncryptionService<String> {
 
-    override fun secure(data: String): String {
+    override fun encrypt(data: String): String {
         return try {
             val byteArrayData = data.trim().toByteArray(Charsets.UTF_8)
             val encodedData = Base64.encode(byteArrayData, Base64.DEFAULT)
@@ -18,7 +18,7 @@ class Base64MessageEncryption :
     }
 
     override fun isMatched(encryptedData: String, data: String): Boolean {
-        return secure(data) == encryptedData
+        return encrypt(data) == encryptedData
     }
 
     override fun decrypt(encryptedData: String): String {
