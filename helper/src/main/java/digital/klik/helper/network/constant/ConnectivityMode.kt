@@ -1,3 +1,5 @@
+@file:Suppress("DEPRECATION")
+
 package digital.klik.helper.network.constant
 
 import android.net.ConnectivityManager
@@ -12,7 +14,6 @@ enum class ConnectivityMode {
     BLUETOOTH;
 
     companion object {
-        @Suppress("DEPRECATION")
         fun from(networkInfo: NetworkInfo): ConnectivityMode {
             return when(networkInfo.type) {
                 ConnectivityManager.TYPE_WIFI -> WIFI
