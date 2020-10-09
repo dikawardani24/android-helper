@@ -1,4 +1,4 @@
-package digital.klik.helper.security.constant
+package digital.klik.helper.security.encryption.constant
 
 import digital.klik.helper.security.exception.SecurityException
 
@@ -26,12 +26,14 @@ enum class AesKeySize(val size: Int, val round: Int) {
         }
 
         fun fromKeySize(keySize: Int): AesKeySize {
-            val found = from { keySize == it.size }
+            val found =
+                from { keySize == it.size }
             return found ?: throw SecurityException("Unsupported aes key size for key size : $keySize")
         }
 
         fun fromRoundSize(round: Int): AesKeySize {
-            val found = from { round == it.round }
+            val found =
+                from { round == it.round }
             return found ?: throw SecurityException("Unsupported aes key size for round size : $round")
         }
     }

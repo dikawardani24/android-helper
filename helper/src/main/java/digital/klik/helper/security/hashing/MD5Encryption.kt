@@ -1,13 +1,13 @@
-package digital.klik.helper.security
+package digital.klik.helper.security.hashing
 
-import digital.klik.helper.security.constant.HashingAlgorithm
+import digital.klik.helper.security.HashingService
+import digital.klik.helper.security.hashing.constant.HashingAlgorithm
 import digital.klik.helper.security.exception.SecurityException
-import digital.klik.helper.security.service.MessageEncryptionService
 import java.math.BigInteger
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
 
-class MD5Encryption: MessageEncryptionService {
+class MD5Encryption: HashingService<String> {
 
     override fun secure(data: String): String {
         return try {

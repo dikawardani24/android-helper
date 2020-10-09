@@ -1,14 +1,14 @@
-package digital.klik.helper.security.constant
+package digital.klik.helper.security.encryption.constant
 
 import digital.klik.helper.security.exception.SecurityException
 
-enum class HashingAlgorithm(val value: String) {
-    MD5("MD5");
+enum class EncryptionAlgorithm(val value: String) {
+    AES("AES");
 
     companion object {
 
-        fun from(algorithmString: String): HashingAlgorithm {
-            var found: HashingAlgorithm? = null
+        fun from(algorithmString: String): EncryptionAlgorithm {
+            var found: EncryptionAlgorithm? = null
 
             for (algorithm in values()) {
                 if (algorithm.value == algorithmString) {

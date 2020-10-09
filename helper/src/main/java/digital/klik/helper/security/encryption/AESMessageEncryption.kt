@@ -1,16 +1,16 @@
-package digital.klik.helper.security
+package digital.klik.helper.security.encryption
 
 import android.util.Base64
-import digital.klik.helper.security.constant.AesCipherTransformation
-import digital.klik.helper.security.constant.AesKeySize
-import digital.klik.helper.security.constant.EncryptionAlgorithm
-import digital.klik.helper.security.service.MessageDecryptionService
-import digital.klik.helper.security.service.MessageEncryptionService
+import digital.klik.helper.security.EncryptionService
+import digital.klik.helper.security.encryption.constant.AesCipherTransformation
+import digital.klik.helper.security.encryption.constant.AesKeySize
+import digital.klik.helper.security.encryption.constant.EncryptionAlgorithm
 import javax.crypto.Cipher
 import javax.crypto.KeyGenerator
 import javax.crypto.SecretKey
 
-class AESMessageEncryption: MessageEncryptionService, MessageDecryptionService {
+class AESMessageEncryption:
+    EncryptionService<String> {
     private val algorithm = EncryptionAlgorithm.AES
     private var secretKey: SecretKey
     private var cipher = Cipher.getInstance(AesCipherTransformation.CBS_PKCS_5_PADDING.value)
@@ -31,7 +31,7 @@ class AESMessageEncryption: MessageEncryptionService, MessageDecryptionService {
         return decrypt(encryptedData) == data
     }
 
-    override fun decrypt(encriptedData: String): String {
+    override fun decrypt(encryptedData: String): String {
         TODO("Not yet implemented")
     }
 }

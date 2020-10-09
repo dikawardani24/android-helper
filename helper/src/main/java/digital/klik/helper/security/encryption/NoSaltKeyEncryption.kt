@@ -1,11 +1,11 @@
-package digital.klik.helper.security
+package digital.klik.helper.security.encryption
 
 import android.util.Base64
+import digital.klik.helper.security.EncryptionService
 import digital.klik.helper.security.exception.SecurityException
-import digital.klik.helper.security.service.MessageDecryptionService
-import digital.klik.helper.security.service.MessageEncryptionService
 
-class NoSaltKeyEncryption : MessageEncryptionService, MessageDecryptionService {
+class NoSaltKeyEncryption :
+    EncryptionService<String> {
 
     override fun secure(data: String): String {
         return try {
@@ -21,9 +21,9 @@ class NoSaltKeyEncryption : MessageEncryptionService, MessageDecryptionService {
         return secure(data) == encryptedData
     }
 
-    override fun decrypt(encriptedData: String): String {
+    override fun decrypt(encryptedData: String): String {
         try {
-            val byteArrayEncryptedData = encriptedData.toByteArray(Charsets.UTF_8)
+            val byteArrayEncryptedData = encryptedData.toByteArray(Charsets.UTF_8)
             val decoded = Base64.decode(byteArrayEncryptedData, Base64.DEFAULT)
             return String(decoded, Charsets.UTF_8)
         } catch (e: Exception) {

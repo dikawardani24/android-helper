@@ -1,4 +1,4 @@
-package digital.klik.helper.security.constant
+package digital.klik.helper.security.encryption.constant
 
 import digital.klik.helper.security.exception.SecurityException
 

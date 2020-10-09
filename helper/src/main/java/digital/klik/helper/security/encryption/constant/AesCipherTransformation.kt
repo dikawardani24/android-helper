@@ -1,4 +1,4 @@
-package digital.klik.helper.security.constant
+package digital.klik.helper.security.encryption.constant
 
 enum class AesCipherTransformation(val value: String) {
     CBS_PKCS_5_PADDING("AES/CBC/PKCS5PADDING");
