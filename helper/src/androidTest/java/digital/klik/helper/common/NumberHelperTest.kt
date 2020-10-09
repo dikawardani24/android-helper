@@ -16,7 +16,7 @@ class NumberHelperTest {
         assertTrue(result1 == "100.60")
 
         val result2 = NumberHelper.formatWithNotation(999999.6)
-        LoggerHelper.debug(this, result2)
+        logDebug(result2)
         assertTrue(result2 == "999,999.60")
 
 

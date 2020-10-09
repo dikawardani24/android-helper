@@ -1,10 +1,9 @@
 package digital.klik.helper.security.encryption.aes
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import digital.klik.helper.common.LoggerHelper
 import digital.klik.helper.common.extension.logDebug
 import digital.klik.helper.security.encryption.constant.EncryptionPadding
-import org.junit.Assert.*
+import org.junit.Assert.assertTrue
 import org.junit.Test
 import org.junit.runner.RunWith
 

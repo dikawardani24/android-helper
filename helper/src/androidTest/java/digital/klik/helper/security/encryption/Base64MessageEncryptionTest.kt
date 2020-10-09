@@ -1,7 +1,6 @@
 package digital.klik.helper.security.encryption
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import digital.klik.helper.common.LoggerHelper
 import digital.klik.helper.common.extension.logDebug
 import org.junit.Assert.assertTrue
 import org.junit.Test
