@@ -15,7 +15,7 @@ import retrofit2.HttpException
 import java.io.IOException
 import java.net.SocketTimeoutException
 
-class ApiExecutorHelper {
+object ApiExecutorHelper {
 
     private fun handleHttpError(throwable: Throwable): AppException {
         return when(throwable) {
