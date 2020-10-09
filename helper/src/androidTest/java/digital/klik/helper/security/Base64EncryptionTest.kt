@@ -1,15 +1,15 @@
 package digital.klik.helper.security
 
 import digital.klik.helper.common.LoggerHelper
-import digital.klik.helper.security.encryption.NoSaltKeyEncryption
+import digital.klik.helper.security.encryption.Base64Encryption
 import org.junit.Test
 
 import org.junit.Assert.*
 
-class NoSaltKeyEncryptionTest {
+class Base64EncryptionTest {
 
     private val noSaltKeyEncryption =
-        NoSaltKeyEncryption()
+        Base64Encryption()
 
     @Test
     fun secure() {

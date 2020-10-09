@@ -4,7 +4,7 @@ import android.util.Base64
 import digital.klik.helper.security.EncryptionService
 import digital.klik.helper.security.exception.SecurityException
 
-class NoSaltKeyEncryption :
+class Base64Encryption :
     EncryptionService<String> {
 
     override fun secure(data: String): String {
