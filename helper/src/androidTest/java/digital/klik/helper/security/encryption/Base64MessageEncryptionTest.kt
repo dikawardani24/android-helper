@@ -1,10 +1,8 @@
-package digital.klik.helper.security
+package digital.klik.helper.security.encryption
 
 import digital.klik.helper.common.LoggerHelper
-import digital.klik.helper.security.encryption.Base64MessageEncryption
+import org.junit.Assert.assertTrue
 import org.junit.Test
-
-import org.junit.Assert.*
 
 class Base64MessageEncryptionTest {
 
