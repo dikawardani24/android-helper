@@ -3,7 +3,6 @@ package digital.klik.helper.security.encryption.constant
 import digital.klik.helper.security.exception.SecurityException
 
 enum class EncryptionAlgorithm(val value: String) {
-    BASE_64("BASE_64"),
     AES("AES");
 
     companion object {
