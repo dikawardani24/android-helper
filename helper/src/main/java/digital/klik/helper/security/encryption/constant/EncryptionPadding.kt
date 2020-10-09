@@ -2,7 +2,7 @@ package digital.klik.helper.security.encryption.constant
 
 import digital.klik.helper.security.exception.SecurityException
 
-enum class EncryptionPadding(val padding: String) {
+enum class EncryptionPadding(val value: String) {
     NO_PADDING("NoPadding"),
     PKCS_5_PADDING("PKCS5Padding"),
     PKCS_1_PADDING("PKCS1Padding"),
@@ -14,7 +14,7 @@ enum class EncryptionPadding(val padding: String) {
             var found: EncryptionPadding? = null
 
             for (encryptionPadding in values()) {
-                if (encryptionPadding.padding == padding) {
+                if (encryptionPadding.value == padding) {
                     found = encryptionPadding
                     break
                 }

@@ -21,7 +21,7 @@ object ConnectivityModeHelper {
             } else {
                 @Suppress("DEPRECATION")
                 activeNetworkInfo?.run {
-                    ConnectivityMode.from(type)
+                    ConnectivityMode.from(this)
                 } ?: ConnectivityMode.NONE
             }
         }

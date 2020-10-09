@@ -2,7 +2,7 @@ package digital.klik.helper.security.encryption.constant
 
 import digital.klik.helper.security.exception.SecurityException
 
-enum class EncryptionMode(val mode: String) {
+enum class EncryptionMode(val value: String) {
     CBC("CBC"),
     ECB("ECB");
 
@@ -11,7 +11,7 @@ enum class EncryptionMode(val mode: String) {
             var found: EncryptionMode? = null
 
             for (encryptionMode in values()) {
-                if (encryptionMode.mode == mode) {
+                if (encryptionMode.value == mode) {
                     found = encryptionMode
                     break
                 }
