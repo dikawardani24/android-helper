@@ -1,7 +1,7 @@
 package digital.klik.helper.security.encryption.aes
 
 import digital.klik.helper.security.encryption.BaseMessageEncryption
-import digital.klik.helper.security.encryption.constant.AesKeySize
+import digital.klik.helper.security.encryption.aes.constant.AesKeySize
 import digital.klik.helper.security.encryption.constant.EncryptionAlgorithm
 import digital.klik.helper.security.encryption.constant.EncryptionMode
 import digital.klik.helper.security.exception.SecurityException
