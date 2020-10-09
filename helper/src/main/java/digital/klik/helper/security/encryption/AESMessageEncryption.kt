@@ -12,23 +12,9 @@ import javax.crypto.spec.SecretKeySpec
 
 class AESMessageEncryption : EncryptionService<String> {
     private val algorithm = EncryptionAlgorithm.AES
+    lateinit var encryptionMode: EncryptionMode
+    lateinit var encryptionPadding: EncryptionPadding
     private lateinit var secretKey: SecretKey
-    private var cipher: Cipher? = null
-
-    lateinit var mode: EncryptionMode
-    lateinit var padding: EncryptionPadding
-
-    private fun initCipher(): Cipher {
-        if (!this::mode.isInitialized) {
-            throw SecurityException("Mode is not initialized")
-        }
-
-        if (!this::padding.isInitialized) {
-            throw SecurityException("Padding is not initialized")
-        }
-
-        return Cipher.getInstance("${algorithm.value}/${mode.value}/${padding.value}")
-    }
 
     private fun validateSecretKey(secretKey: String) {
         val length = secretKey.length
@@ -42,7 +28,7 @@ class AESMessageEncryption : EncryptionService<String> {
         }
 
         if (!valid) {
-            throw SecurityException("Invalid secret key length, must on of 16, 24 or 32")
+            throw SecurityException("Invalid secret key length, the given key length : $length, must on of 16, 24 or 32")
         }
     }
 
@@ -52,10 +38,27 @@ class AESMessageEncryption : EncryptionService<String> {
         this.secretKey = SecretKeySpec(secretBytes, algorithm.value)
     }
 
+    private fun initCipher(cipherMode: Int): Cipher {
+        if (!this::encryptionMode.isInitialized) {
+            throw SecurityException("Mode is not initialized")
+        }
+
+        if (!this::encryptionPadding.isInitialized) {
+            throw SecurityException("Padding is not initialized")
+        }
+
+        if (!this::secretKey.isInitialized) {
+            throw SecurityException("Secret key is not initialized")
+        }
+
+        val cipher = Cipher.getInstance("${algorithm.value}/${encryptionMode.value}/${encryptionPadding.value}")
+        cipher.init(cipherMode, secretKey)
+        return cipher
+    }
+
     override fun secure(data: String): String {
-        val currentCipher = initCipher()
-        currentCipher.init(Cipher.ENCRYPT_MODE, secretKey)
-        val cipherText = currentCipher.doFinal(data.toByteArray(Charsets.UTF_8))
+        val cipher = initCipher(Cipher.ENCRYPT_MODE)
+        val cipherText = cipher.doFinal(data.toByteArray(Charsets.UTF_8))
         return Base64.encodeToString(cipherText, Base64.DEFAULT)
     }
 
@@ -66,11 +69,9 @@ class AESMessageEncryption : EncryptionService<String> {
     }
 
     override fun decrypt(encryptedData: String): String {
-        val currentCipher = initCipher()
-        currentCipher.init(Cipher.DECRYPT_MODE, secretKey)
-
+        val cipher = initCipher(Cipher.DECRYPT_MODE)
         val bytes = Base64.decode(encryptedData, Base64.DEFAULT)
-        val cipherText = currentCipher.doFinal(bytes)
+        val cipherText = cipher.doFinal(bytes)
         return String(cipherText)
     }
 }

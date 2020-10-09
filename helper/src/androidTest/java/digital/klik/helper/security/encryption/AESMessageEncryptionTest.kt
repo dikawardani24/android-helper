@@ -6,7 +6,6 @@ import digital.klik.helper.security.encryption.constant.EncryptionPadding
 import org.junit.Test
 
 import org.junit.Assert.*
-import javax.crypto.spec.SecretKeySpec
 
 class AESMessageEncryptionTest {
 
@@ -14,8 +13,8 @@ class AESMessageEncryptionTest {
 
     init {
         encryption.setSecretKey("12345678901234567890123456789012")
-        encryption.mode = EncryptionMode.CBC
-        encryption.padding = EncryptionPadding.PKCS_5_PADDING
+        encryption.encryptionMode = EncryptionMode.CBC
+        encryption.encryptionPadding = EncryptionPadding.PKCS_5_PADDING
     }
 
     @Test
