@@ -1,3 +1,5 @@
+@file:Suppress("DEPRECATION")
+
 package digital.klik.helper.network.broadcast
 
 import android.content.BroadcastReceiver
@@ -9,7 +11,6 @@ import androidx.lifecycle.MutableLiveData
 import digital.klik.helper.network.constant.ConnectivityMode
 import digital.klik.helper.network.model.ConnectionInfo
 
-@Suppress("DEPRECATION")
 class NetworkBroadcastReceiver(private val liveData: MutableLiveData<ConnectionInfo>) :
     BroadcastReceiver() {
 

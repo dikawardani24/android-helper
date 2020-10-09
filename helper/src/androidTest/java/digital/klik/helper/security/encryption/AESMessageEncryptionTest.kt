@@ -35,6 +35,10 @@ class AESMessageEncryptionTest {
 
     @Test
     fun decrypt() {
-
+        val toEncrypt = "Dika Wardani"
+        val encrypted = encryption.secure(toEncrypt)
+        val decrypted = encryption.decrypt(encrypted)
+        LoggerHelper.debug(this, "To Encrypt: $toEncrypt, Encrypted: $encrypted, Decrypted: $decrypted")
+        assertTrue(decrypted == toEncrypt)
     }
 }
