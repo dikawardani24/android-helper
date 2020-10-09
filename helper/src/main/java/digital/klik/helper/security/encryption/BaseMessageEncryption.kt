@@ -2,7 +2,6 @@ package digital.klik.helper.security.encryption
 
 import android.util.Base64
 import digital.klik.helper.security.EncryptionService
-import digital.klik.helper.security.encryption.constant.AesKeySize
 import digital.klik.helper.security.encryption.constant.EncryptionAlgorithm
 import digital.klik.helper.security.encryption.constant.EncryptionMode
 import digital.klik.helper.security.encryption.constant.EncryptionPadding
@@ -11,28 +10,14 @@ import javax.crypto.Cipher
 import javax.crypto.SecretKey
 import javax.crypto.spec.SecretKeySpec
 
-abstract class AESMessageEncryption(
+abstract class BaseMessageEncryption (
+    private val algorithm: EncryptionAlgorithm,
     private val encryptionMode: EncryptionMode
 ) : EncryptionService<String> {
-    private val algorithm = EncryptionAlgorithm.AES
     lateinit var encryptionPadding: EncryptionPadding
     protected lateinit var secretKey: SecretKey
 
-    private fun validateSecretKey(secretKey: String) {
-        val length = secretKey.length
-        var valid = false
-
-        for (aesKeySize in AesKeySize.values()) {
-            if (aesKeySize.requiredKeyLength == length) {
-                valid = true
-                break
-            }
-        }
-
-        if (!valid) {
-            throw SecurityException("Invalid secret key length, the given key length : $length, must on of 16, 24 or 32")
-        }
-    }
+    protected abstract fun onValidateSecretKey(secretKey: String)
 
     private fun initCipher(): Cipher {
 
@@ -51,7 +36,7 @@ abstract class AESMessageEncryption(
     protected abstract fun onInitCipherDecrypt(cipher: Cipher)
 
     fun setSecretKey(secretKey: String) {
-        validateSecretKey(secretKey)
+        onValidateSecretKey(secretKey)
         val secretBytes = secretKey.toByteArray(Charsets.UTF_8)
         this.secretKey = SecretKeySpec(secretBytes, algorithm.value)
     }

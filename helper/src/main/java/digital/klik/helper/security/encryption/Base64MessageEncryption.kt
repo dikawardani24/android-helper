@@ -4,8 +4,7 @@ import android.util.Base64
 import digital.klik.helper.security.EncryptionService
 import digital.klik.helper.security.exception.SecurityException
 
-class Base64MessageEncryption :
-    EncryptionService<String> {
+class Base64MessageEncryption : EncryptionService<String> {
 
     override fun encrypt(data: String): String {
         return try {

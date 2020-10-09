@@ -1,11 +1,11 @@
-package digital.klik.helper.security.encryption.aes
+package digital.klik.helper.security.encryption.des
 
 import digital.klik.helper.security.encryption.constant.EncryptionMode
 import digital.klik.helper.security.exception.SecurityException
 import javax.crypto.Cipher
 import javax.crypto.spec.IvParameterSpec
 
-class AesCbcMessageEncryption : BaseAesMessageEncryption(EncryptionMode.CBC) {
+class DesCbcMessageEncryption : BaseDesMessageEncryption(EncryptionMode.CBC) {
     lateinit var iv: IvParameterSpec
 
     override fun onInitCipherEncrypt(cipher: Cipher) {
@@ -24,5 +24,6 @@ class AesCbcMessageEncryption : BaseAesMessageEncryption(EncryptionMode.CBC) {
 
         cipher.init(Cipher.DECRYPT_MODE, secretKey, iv)
     }
+
 
 }
