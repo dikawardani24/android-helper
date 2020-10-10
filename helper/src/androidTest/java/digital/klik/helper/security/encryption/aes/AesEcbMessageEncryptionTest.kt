@@ -1,13 +1,10 @@
 package digital.klik.helper.security.encryption.aes
 
-import androidx.test.ext.junit.runners.AndroidJUnit4
 import digital.klik.helper.common.extension.logDebug
 import digital.klik.helper.security.encryption.constant.EncryptionPadding
 import org.junit.Assert.assertTrue
 import org.junit.Test
-import org.junit.runner.RunWith
 
-@RunWith(AndroidJUnit4::class)
 class AesEcbMessageEncryptionTest {
     private val encryption = AesEcbMessageEncryption()
 

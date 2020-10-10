@@ -1,13 +1,10 @@
 package digital.klik.helper.security.encryption
 
-import androidx.test.ext.junit.runners.AndroidJUnit4
 import digital.klik.helper.common.extension.logDebug
 import digital.klik.helper.security.encryption.base64.Base64MessageEncryption
 import org.junit.Assert.assertTrue
 import org.junit.Test
-import org.junit.runner.RunWith
 
-@RunWith(AndroidJUnit4::class)
 class Base64MessageEncryptionTest {
 
     private val noSaltKeyEncryption =
