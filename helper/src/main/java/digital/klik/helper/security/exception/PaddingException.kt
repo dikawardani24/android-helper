@@ -1,9 +1,7 @@
 package digital.klik.helper.security.exception
 
-import digital.klik.helper.exception.AppException
-
 @Suppress("unused")
-open class SecurityException : AppException {
+class PaddingException : SecurityException {
     constructor() : super()
     constructor(message: String?) : super(message)
     constructor(message: String?, cause: Throwable?) : super(message, cause)

@@ -1,7 +1,7 @@
 package digital.klik.helper.security.encryption.des
 
 import digital.klik.helper.security.encryption.constant.EncryptionMode
-import digital.klik.helper.security.exception.SecurityException
+import digital.klik.helper.security.exception.IvParameterException
 import javax.crypto.Cipher
 import javax.crypto.spec.IvParameterSpec
 
@@ -19,7 +19,7 @@ class DesCbcMessageEncryption : BaseDesMessageEncryption(EncryptionMode.CBC) {
 
     override fun onInitCipherDecrypt(cipher: Cipher) {
         if (!this::iv.isInitialized) {
-            throw SecurityException("Iv Parameter is required for AES Decryption")
+            throw IvParameterException("Iv Parameter is required for AES Decryption")
         }
 
         cipher.init(Cipher.DECRYPT_MODE, secretKey, iv)

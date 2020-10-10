@@ -1,10 +1,9 @@
-package digital.klik.helper.security.encryption
+package digital.klik.helper.security.encryption.base64
 
 import android.util.Base64
-import digital.klik.helper.security.EncryptionService
-import digital.klik.helper.security.exception.SecurityException
+import digital.klik.helper.security.encryption.BaseEncryption
 
-class Base64MessageEncryption : EncryptionService<String> {
+class Base64MessageEncryption : BaseEncryption<String>() {
 
     override fun encrypt(data: String): String {
         return try {
@@ -12,21 +11,25 @@ class Base64MessageEncryption : EncryptionService<String> {
             val encodedData = Base64.encode(byteArrayData, Base64.DEFAULT)
             String(encodedData, Charsets.UTF_8)
         } catch (e: Exception) {
-            throw SecurityException("Unable to encrypt with no salt key caused by ${e.message}", e)
+            throw handleError(e)
         }
     }
 
     override fun isMatched(encryptedData: String, data: String): Boolean {
-        return encrypt(data) == encryptedData
+        return try {
+            encrypt(data) == encryptedData
+        } catch (e: Exception) {
+            throw handleError(e)
+        }
     }
 
     override fun decrypt(encryptedData: String): String {
-        try {
+        return try {
             val byteArrayEncryptedData = encryptedData.toByteArray(Charsets.UTF_8)
             val decoded = Base64.decode(byteArrayEncryptedData, Base64.DEFAULT)
-            return String(decoded, Charsets.UTF_8)
+            String(decoded, Charsets.UTF_8)
         } catch (e: Exception) {
-            throw SecurityException("Unable to decrypt with no salt key caused by ${e.message}", e)
+            throw handleError(e)
         }
     }
 
