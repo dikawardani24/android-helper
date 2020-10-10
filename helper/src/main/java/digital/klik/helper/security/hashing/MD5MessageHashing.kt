@@ -9,7 +9,7 @@ import java.security.NoSuchAlgorithmException
 
 class MD5MessageHashing: HashingService<String> {
 
-    override fun secure(data: String): String {
+    override fun hash(data: String): String {
         return try {
             val algorithm = HashingAlgorithm.MD5.value
             val messageDigest = MessageDigest.getInstance(algorithm)
@@ -25,6 +25,6 @@ class MD5MessageHashing: HashingService<String> {
         }
     }
 
-    override fun isMatched(encryptedData: String, data: String) = secure(data) == encryptedData
+    override fun isMatched(encryptedData: String, data: String) = hash(data) == encryptedData
 
 }
