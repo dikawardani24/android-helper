@@ -4,7 +4,8 @@ import digital.klik.helper.security.exception.SecurityException
 
 enum class EncryptionAlgorithm(val value: String) {
     AES("AES"),
-    DES("DES");
+    DES("DES"),
+    BLOW_FISH("Blowfish");
 
     companion object {
 

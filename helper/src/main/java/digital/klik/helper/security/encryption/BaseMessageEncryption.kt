@@ -42,22 +42,34 @@ abstract class BaseMessageEncryption (
     }
 
     override fun encrypt(data: String): String {
-        val cipher = initCipher()
-        onInitCipherEncrypt(cipher)
-        val cipherText = cipher.doFinal(data.toByteArray(Charsets.UTF_8))
-        return Base64.encodeToString(cipherText, Base64.DEFAULT)
+        return try {
+            val cipher = initCipher()
+            onInitCipherEncrypt(cipher)
+            val cipherText = cipher.doFinal(data.toByteArray(Charsets.UTF_8))
+            Base64.encodeToString(cipherText, Base64.DEFAULT)
+        } catch (e: Exception) {
+            throw SecurityException(e.message, e)
+        }
     }
 
     override fun isMatched(encryptedData: String, data: String): Boolean {
-        val decrypted = decrypt(encryptedData)
-        return decrypted == data
+        return try {
+            val decrypted = decrypt(encryptedData)
+            decrypted == data
+        } catch (e: Exception) {
+            throw SecurityException(e.message, e)
+        }
     }
 
     override fun decrypt(encryptedData: String): String {
-        val cipher = initCipher()
-        onInitCipherDecrypt(cipher)
-        val bytes = Base64.decode(encryptedData, Base64.DEFAULT)
-        val cipherText = cipher.doFinal(bytes)
-        return String(cipherText)
+        return try {
+            val cipher = initCipher()
+            onInitCipherDecrypt(cipher)
+            val bytes = Base64.decode(encryptedData, Base64.DEFAULT)
+            val cipherText = cipher.doFinal(bytes)
+            String(cipherText)
+        } catch (e: Exception) {
+            throw SecurityException(e.message, e)
+        }
     }
 }
