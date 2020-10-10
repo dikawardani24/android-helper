@@ -14,7 +14,7 @@ class AesCbcMessageEncryptionTest {
     init {
         encryption.run {
             setSecretKey("12345678901234567890123456789012")
-            encryptionPadding = EncryptionPadding.PKCS_5_PADDING
+            encryptionPadding = EncryptionPadding.NO_PADDING
         }
     }
 
