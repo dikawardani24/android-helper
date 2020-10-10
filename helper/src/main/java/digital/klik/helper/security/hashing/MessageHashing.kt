@@ -7,7 +7,7 @@ import java.math.BigInteger
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
 
-open class BaseMessageHashing(private val algorithm: HashingAlgorithm): HashingService<String> {
+class MessageHashing(private val algorithm: HashingAlgorithm): HashingService<String> {
     override fun hash(data: String): String {
         return try {
             val messageDigest = MessageDigest.getInstance(algorithm.value)
