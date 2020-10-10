@@ -1,5 +1,7 @@
 package digital.klik.helper.security.encryption.aes
 
+import androidx.test.platform.app.InstrumentationRegistry
+import digital.klik.helper.R
 import digital.klik.helper.common.extension.logDebug
 import digital.klik.helper.security.encryption.constant.EncryptionPadding
 import org.junit.Assert.assertTrue
@@ -7,6 +9,7 @@ import org.junit.Test
 
 class AesCbcMessageEncryptionTest {
     private val encryption = AesCbcMessageEncryption()
+    private val appContext = InstrumentationRegistry.getInstrumentation().targetContext
 
     init {
         encryption.run {
@@ -17,7 +20,7 @@ class AesCbcMessageEncryptionTest {
 
     @Test
     fun encrypt() {
-        val toEncrypt = "Dika Wardani"
+        val toEncrypt = appContext.getString(R.string.testMessage)
         val encrypted = encryption.encrypt(toEncrypt)
         logDebug("To Encrypt: $toEncrypt, Encrypted: $encrypted")
         assertTrue(toEncrypt != encrypted)
@@ -25,7 +28,7 @@ class AesCbcMessageEncryptionTest {
 
     @Test
     fun isMatched() {
-        val toEncrypt = "Dika Wardani"
+        val toEncrypt = appContext.getString(R.string.testMessage)
         val encrypted = encryption.encrypt(toEncrypt)
         logDebug( "To Encrypt: $toEncrypt, Encrypted: $encrypted")
         assertTrue(encryption.isMatched(encrypted, toEncrypt))
@@ -33,7 +36,7 @@ class AesCbcMessageEncryptionTest {
 
     @Test
     fun decrypt() {
-        val toEncrypt = "Dika Wardani"
+        val toEncrypt = appContext.getString(R.string.testMessage)
         val encrypted = encryption.encrypt(toEncrypt)
         val decrypted = encryption.decrypt(encrypted)
         logDebug( "To Encrypt: $toEncrypt, Encrypted: $encrypted, Decrypted: $decrypted")
