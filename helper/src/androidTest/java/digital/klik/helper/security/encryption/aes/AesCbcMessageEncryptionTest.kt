@@ -19,34 +19,42 @@ class AesCbcMessageEncryptionTest {
         }
     }
 
+    private fun executeEncryption(function: () -> Boolean) {
+        try {
+            assertTrue(function())
+        } catch (e: Exception) {
+            assertTrue(e is SecurityException)
+        }
+    }
+
     @Test
     fun encrypt() {
-        try {
+        executeEncryption {
             val toEncrypt = appContext.getString(R.string.testMessage)
             val encrypted = encryption.encrypt(toEncrypt)
             logDebug("To Encrypt: $toEncrypt, Encrypted: $encrypted")
-            assertTrue(toEncrypt != encrypted)
-        } catch (e: Exception) {
-            if (e is SecurityException) {
-                e.cause?.printStackTrace()
-            }
+            toEncrypt != encrypted
         }
     }
 
     @Test
     fun isMatched() {
-        val toEncrypt = appContext.getString(R.string.testMessage)
-        val encrypted = encryption.encrypt(toEncrypt)
-        logDebug( "To Encrypt: $toEncrypt, Encrypted: $encrypted")
-        assertTrue(encryption.isMatched(encrypted, toEncrypt))
+       executeEncryption {
+           val toEncrypt = appContext.getString(R.string.testMessage)
+           val encrypted = encryption.encrypt(toEncrypt)
+           logDebug( "To Encrypt: $toEncrypt, Encrypted: $encrypted")
+           encryption.isMatched(encrypted, toEncrypt)
+       }
     }
 
     @Test
     fun decrypt() {
-        val toEncrypt = appContext.getString(R.string.testMessage)
-        val encrypted = encryption.encrypt(toEncrypt)
-        val decrypted = encryption.decrypt(encrypted)
-        logDebug( "To Encrypt: $toEncrypt, Encrypted: $encrypted, Decrypted: $decrypted")
-        assertTrue(decrypted == toEncrypt)
+       executeEncryption {
+           val toEncrypt = appContext.getString(R.string.testMessage)
+           val encrypted = encryption.encrypt(toEncrypt)
+           val decrypted = encryption.decrypt(encrypted)
+           logDebug( "To Encrypt: $toEncrypt, Encrypted: $encrypted, Decrypted: $decrypted")
+           decrypted == toEncrypt
+       }
     }
 }
