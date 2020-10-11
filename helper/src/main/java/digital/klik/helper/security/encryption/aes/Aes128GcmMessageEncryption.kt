@@ -3,11 +3,21 @@ package digital.klik.helper.security.encryption.aes
 import digital.klik.helper.security.encryption.constant.EncryptionAlgorithm
 import digital.klik.helper.security.encryption.constant.EncryptionMode
 import digital.klik.helper.security.exception.IvParameterException
+import digital.klik.helper.security.exception.SecretKeyException
 import javax.crypto.Cipher
 import javax.crypto.spec.IvParameterSpec
 
-class AesCbcMessageEncryption : BaseAesMessageEncryption(EncryptionAlgorithm.AES, EncryptionMode.CBC) {
+class Aes128GcmMessageEncryption : BaseAesMessageEncryption(EncryptionAlgorithm.AES_128, EncryptionMode.GCM) {
     lateinit var iv: IvParameterSpec
+
+    override fun onValidateSecretKey(secretKey: String) {
+        val length = secretKey.length
+        if (encryptionMode == EncryptionMode.GCM) {
+            if (length != 16) {
+                throw SecretKeyException("Secret key length for GCM mode must be 16, provided length : $length")
+            }
+        }
+    }
 
     override fun onInitCipherEncrypt(cipher: Cipher) {
         if (!this::iv.isInitialized) {

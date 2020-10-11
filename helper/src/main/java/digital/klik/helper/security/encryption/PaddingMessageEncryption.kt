@@ -12,7 +12,7 @@ import javax.crypto.spec.SecretKeySpec
 
 abstract class PaddingMessageEncryption (
     private val algorithm: EncryptionAlgorithm,
-    private val encryptionMode: EncryptionMode
+    protected val encryptionMode: EncryptionMode
 ) : BaseEncryption<String>() {
     lateinit var encryptionPadding: EncryptionPadding
     protected lateinit var secretKey: SecretKey

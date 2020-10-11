@@ -7,8 +7,9 @@ import digital.klik.helper.security.encryption.constant.EncryptionMode
 import digital.klik.helper.security.exception.SecretKeyException
 
 abstract class BaseAesMessageEncryption(
+    algorithm: EncryptionAlgorithm,
     encryptionMode: EncryptionMode
-) : PaddingMessageEncryption(EncryptionAlgorithm.AES, encryptionMode) {
+) : PaddingMessageEncryption(algorithm, encryptionMode) {
 
     override fun onValidateSecretKey(secretKey: String) {
         val length = secretKey.length
