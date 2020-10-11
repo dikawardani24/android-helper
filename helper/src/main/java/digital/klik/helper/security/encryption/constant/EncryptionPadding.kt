@@ -11,7 +11,8 @@ enum class EncryptionPadding(val value: String) {
     OAEP_WITH_SHA_256_AND_MGF_1_PADDING("OAEPWithSHA-256AndMGF1Padding"),
     OAEP_WITH_SHA_224_AND_MGF_1_PADDING("OAEPWithSHA-224AndMGF1Padding"),
     OAEP_WITH_SHA_384_AND_MGF_1_PADDING("OAEPWithSHA-384AndMGF1Padding"),
-    OAEP_WITH_SHA_512_AND_MGF_1_PADDING("OAEPWithSHA-512AndMGF1Padding");
+    OAEP_WITH_SHA_512_AND_MGF_1_PADDING("OAEPWithSHA-512AndMGF1Padding"),
+    ISO_10126_PADDING("ISO10126Padding");
 
     companion object {
         fun from(padding: String): EncryptionPadding {
