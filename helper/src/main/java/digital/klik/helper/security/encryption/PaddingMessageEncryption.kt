@@ -46,7 +46,7 @@ abstract class PaddingMessageEncryption (
 
         if (encryptionPadding == EncryptionPadding.NO_PADDING) {
             while (toEncrypt.toByteArray(Charsets.UTF_8).size % 16 != 0) {
-                toEncrypt += '\u0020';
+                toEncrypt += '\u0020'
             }
         }
 
