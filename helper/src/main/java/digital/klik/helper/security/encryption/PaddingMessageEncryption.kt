@@ -42,10 +42,18 @@ abstract class PaddingMessageEncryption (
     }
 
     override fun encrypt(data: String): String {
+        var toEncrypt = data
+
+        if (encryptionPadding == EncryptionPadding.NO_PADDING) {
+            while (toEncrypt.toByteArray(Charsets.UTF_8).size % 16 != 0) {
+                toEncrypt += '\u0020';
+            }
+        }
+
         return try {
             val cipher = initCipher()
             onInitCipherEncrypt(cipher)
-            val cipherText = cipher.doFinal(data.toByteArray(Charsets.UTF_8))
+            val cipherText = cipher.doFinal(toEncrypt.toByteArray(Charsets.UTF_8))
             Base64.encodeToString(cipherText, Base64.DEFAULT)
         } catch (e: Exception) {
             throw handleError(e)
@@ -67,7 +75,13 @@ abstract class PaddingMessageEncryption (
             onInitCipherDecrypt(cipher)
             val bytes = Base64.decode(encryptedData, Base64.DEFAULT)
             val cipherText = cipher.doFinal(bytes)
-            String(cipherText)
+
+            val data = String(cipherText)
+            if (encryptionPadding == EncryptionPadding.NO_PADDING) {
+                data.trim()
+            } else {
+                data
+            }
         } catch (e: Exception) {
             throw handleError(e)
         }
