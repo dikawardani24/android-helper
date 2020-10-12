@@ -68,7 +68,7 @@ abstract class PaddingMessageEncryption (
         }
     }
 
-    fun setSecretKey(secretKey: String) {
+    override fun setSecretKey(secretKey: String) {
         onValidateSecretKey(secretKey)
         val secretBytes = secretKey.toByteArray(Charsets.UTF_8)
         this.secretKey = SecretKeySpec(secretBytes, algorithm.value)
