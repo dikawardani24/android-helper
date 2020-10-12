@@ -3,13 +3,14 @@ package digital.klik.helper.security.encryption.aes
 import androidx.test.platform.app.InstrumentationRegistry
 import digital.klik.helper.R
 import digital.klik.helper.common.extension.logDebug
+import digital.klik.helper.security.encryption.constant.EncryptionMode
 import digital.klik.helper.security.encryption.constant.EncryptionPadding
 import digital.klik.helper.security.exception.SecurityException
 import org.junit.Assert.assertTrue
 import org.junit.Test
 
 class Aes128GcmMessageEncryptionTest {
-    private val encryption = Aes128GcmMessageEncryption()
+    private val encryption = Aes128MessageEncryption(EncryptionMode.GCM)
     private val appContext = InstrumentationRegistry.getInstrumentation().targetContext
 
     init {

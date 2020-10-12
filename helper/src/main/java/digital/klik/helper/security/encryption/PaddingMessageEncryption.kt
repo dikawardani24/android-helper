@@ -4,18 +4,21 @@ import android.util.Base64
 import digital.klik.helper.security.encryption.constant.EncryptionAlgorithm
 import digital.klik.helper.security.encryption.constant.EncryptionMode
 import digital.klik.helper.security.encryption.constant.EncryptionPadding
+import digital.klik.helper.security.exception.IvParameterException
 import digital.klik.helper.security.exception.PaddingException
 import digital.klik.helper.security.exception.SecretKeyException
 import javax.crypto.Cipher
 import javax.crypto.SecretKey
+import javax.crypto.spec.IvParameterSpec
 import javax.crypto.spec.SecretKeySpec
 
 abstract class PaddingMessageEncryption (
     private val algorithm: EncryptionAlgorithm,
-    protected val encryptionMode: EncryptionMode
+    private val encryptionMode: EncryptionMode
 ) : BaseEncryption<String>() {
     lateinit var encryptionPadding: EncryptionPadding
-    protected lateinit var secretKey: SecretKey
+    private lateinit var secretKey: SecretKey
+    lateinit var iv: IvParameterSpec
 
     protected abstract fun onValidateSecretKey(secretKey: String)
 
@@ -32,8 +35,38 @@ abstract class PaddingMessageEncryption (
         return Cipher.getInstance("${algorithm.value}/${encryptionMode.value}/${encryptionPadding.value}")
     }
 
-    protected abstract fun onInitCipherEncrypt(cipher: Cipher)
-    protected abstract fun onInitCipherDecrypt(cipher: Cipher)
+    private fun onInitCipherEncrypt(cipher: Cipher) {
+        when (encryptionMode) {
+            EncryptionMode.ECB -> {
+                cipher.init(Cipher.ENCRYPT_MODE, secretKey)
+            }
+
+            else -> {
+                if (!this::iv.isInitialized) {
+                    cipher.init(Cipher.ENCRYPT_MODE, secretKey)
+                    iv = IvParameterSpec(cipher.iv)
+                } else {
+                    cipher.init(Cipher.ENCRYPT_MODE, secretKey, iv)
+                }
+            }
+        }
+    }
+
+    private fun onInitCipherDecrypt(cipher: Cipher) {
+        when (encryptionMode) {
+            EncryptionMode.ECB -> {
+                cipher.init(Cipher.DECRYPT_MODE, secretKey)
+            }
+
+            else -> {
+                if (!this::iv.isInitialized) {
+                    throw IvParameterException("Iv Parameter is required for AES Decryption")
+                }
+
+                cipher.init(Cipher.DECRYPT_MODE, secretKey, iv)
+            }
+        }
+    }
 
     fun setSecretKey(secretKey: String) {
         onValidateSecretKey(secretKey)

@@ -1,20 +1,22 @@
-package digital.klik.helper.security.encryption.des
+package digital.klik.helper.security.encryption.desEde
 
 import androidx.test.platform.app.InstrumentationRegistry
 import digital.klik.helper.R
 import digital.klik.helper.common.extension.logDebug
 import digital.klik.helper.security.encryption.constant.EncryptionMode
 import digital.klik.helper.security.encryption.constant.EncryptionPadding
-import org.junit.Assert.*
+import digital.klik.helper.security.encryption.des.DesEdeMessageEncryption
+import org.junit.Assert.assertTrue
 import org.junit.Test
 
-class DesEcbMessageEncryptionTest {
-    private val encryption = DesMessageEncryption(EncryptionMode.ECB)
+class DesEdeCbcMessageEncryptionTest {
+    private val encryption = DesEdeMessageEncryption(EncryptionMode.CBC)
     private val appContext = InstrumentationRegistry.getInstrumentation().targetContext
 
     init {
         encryption.run {
-            setSecretKey("12345678")
+            val secretKey = appContext.getString(R.string.aes_128_key)
+            setSecretKey(secretKey)
             encryptionPadding = EncryptionPadding.PKCS_5_PADDING
         }
     }
