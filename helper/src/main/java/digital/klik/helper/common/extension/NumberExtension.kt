@@ -1,6 +1,7 @@
 package digital.klik.helper.common.extension
 
 import digital.klik.helper.common.NumberHelper
+import kotlin.math.pow
 
 fun Number.format(): String {
     return NumberHelper.format(this)
@@ -34,4 +35,8 @@ fun Number.formatToCurrency(pattern: String, currencySymbol: String): String {
 
 fun Number.formatToIndonesiaCurrency(): String {
     return NumberHelper.formatToIndonesiaCurrency(this)
+}
+
+fun Number.pow(n : Int): Long {
+    return toDouble().pow(n.toDouble()).toLong()
 }

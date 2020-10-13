@@ -1,6 +1,7 @@
 package digital.klik.helper.security.encryption
 
 import android.util.Base64
+import digital.klik.helper.security.EncryptionServiceWithKey
 import digital.klik.helper.security.encryption.constant.EncryptionAlgorithm
 import digital.klik.helper.security.encryption.constant.EncryptionMode
 import digital.klik.helper.security.encryption.constant.EncryptionPadding
@@ -15,7 +16,7 @@ import javax.crypto.spec.SecretKeySpec
 abstract class PaddingMessageEncryption (
     private val algorithm: EncryptionAlgorithm,
     private val encryptionMode: EncryptionMode
-) : BaseEncryption<String>() {
+) : BaseEncryption(), EncryptionServiceWithKey<String> {
     lateinit var encryptionPadding: EncryptionPadding
     private lateinit var secretKey: SecretKey
     lateinit var iv: IvParameterSpec
