@@ -1,13 +1,13 @@
 package digital.klik.helper.api.extension
 
-import android.app.Activity
+import android.content.Context
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException
 import com.google.android.gms.common.GooglePlayServicesRepairableException
 import com.google.android.gms.security.ProviderInstaller
 import digital.klik.helper.security.exception.SecurityException
 
 
-fun Activity.installProviderIfNeeded() {
+fun Context.installProviderIfNeeded() {
     try {
         ProviderInstaller.installIfNeeded(this)
     } catch (e: GooglePlayServicesRepairableException) {
