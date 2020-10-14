@@ -18,6 +18,7 @@ import javax.net.ssl.X509TrustManager
 
 @Suppress("MemberVisibilityCanBePrivate", "unused")
 class ApiClient(private val baseUrl: String) {
+    private var retrofit: Retrofit? = null
     private val okHttpClientBuilder = OkHttpClient.Builder()
     private val retrofitBuilder: Retrofit.Builder = Retrofit.Builder()
         .baseUrl(baseUrl)
@@ -82,7 +83,7 @@ class ApiClient(private val baseUrl: String) {
         return this
     }
 
-    fun<T> createEndPoint(context: Context, apiInterfaceClass: Class<T>): T {
+    private fun initializeRetrofit(context: Context): Retrofit {
         if (EnvironmentConfig.isDebuggingMode()) {
             val interceptor = HttpLoggingInterceptor().apply { level = HttpLoggingInterceptor.Level.BODY }
 
@@ -96,13 +97,22 @@ class ApiClient(private val baseUrl: String) {
 
         context.installProviderIfNeeded()
 
-        val retrofit = Retrofit.Builder()
+        return Retrofit.Builder()
             .baseUrl(baseUrl)
             .client(okHttpClientBuilder.build())
             .addConverterFactory(ScalarsConverterFactory.create())
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .build()
-        return retrofit.create(apiInterfaceClass)
+    }
+
+    fun<T> createEndPoint(context: Context, apiInterfaceClass: Class<T>): T {
+        var currentRetrofit = retrofit
+        if (currentRetrofit == null) {
+            currentRetrofit = initializeRetrofit(context)
+            retrofit = currentRetrofit
+        }
+
+        return currentRetrofit.create(apiInterfaceClass)
     }
 }

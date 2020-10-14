@@ -1,12 +1,12 @@
 package digital.klik.helper.api
 
 import digital.klik.helper.Result
-import digital.klik.helper.api.exception.ApiException
-import digital.klik.helper.exception.AppException
-import digital.klik.helper.api.exception.ConnectException
-import digital.klik.helper.exception.UnknownException
 import digital.klik.helper.api.constant.ErrorMessage
 import digital.klik.helper.api.constant.HttpStatus
+import digital.klik.helper.api.exception.ApiException
+import digital.klik.helper.api.exception.ConnectException
+import digital.klik.helper.exception.AppException
+import digital.klik.helper.exception.UnknownException
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.observers.DisposableSingleObserver
@@ -54,5 +54,16 @@ object ApiExecutorHelper {
                     handler(result)
                 }
             })
+    }
+
+    fun <T> singleBlockingExecute(single: Single<T>): Result<T> {
+        return try {
+            val data = single.subscribeOn(Schedulers.io())
+                .blockingGet()
+            Result.Success(data)
+        } catch (e: Exception) {
+            val error = handleHttpError(e)
+            Result.Failure(error)
+        }
     }
 }

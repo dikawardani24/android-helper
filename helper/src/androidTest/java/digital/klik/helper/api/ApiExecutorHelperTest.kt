@@ -6,12 +6,13 @@ import digital.klik.helper.common.extension.logDebug
 import digital.klik.helper.common.extension.logError
 import digital.klik.helper.exception.AppException
 import io.reactivex.Single
-import org.junit.Assert.assertTrue
 import org.junit.Test
+
+import org.junit.Assert.*
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-class ApiClientTest {
+class ApiExecutorHelperTest {
     interface MovieDbApi {
         @GET("genre/movie/list")
         fun getGenres(@Query("api_key") apiKey: String,
