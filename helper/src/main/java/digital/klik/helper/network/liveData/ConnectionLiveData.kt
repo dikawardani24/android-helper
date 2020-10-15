@@ -10,6 +10,7 @@ import digital.klik.helper.network.model.ConnectionInfo
 class ConnectionLiveData(private val context: Context): MutableLiveData<ConnectionInfo>() {
     private val networkReceiver = NetworkBroadcastReceiver(this)
 
+    @Suppress("DEPRECATION")
     override fun onActive() {
         super.onActive()
         val filter = IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION)
