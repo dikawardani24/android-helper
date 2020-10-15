@@ -7,9 +7,7 @@ import android.content.pm.PackageManager
 import android.os.Build
 import android.telephony.TelephonyManager
 import androidx.core.app.ActivityCompat
-import digital.klik.helper.android.exception.AndroidException
-import digital.klik.helper.android.exception.PermissionException
-import digital.klik.helper.android.exception.ServiceException
+import digital.klik.helper.android.exception.*
 
 @Suppress("MemberVisibilityCanBePrivate", "unused")
 object DeviceHelper {
@@ -41,7 +39,8 @@ object DeviceHelper {
     fun getIMEIOrThrow(context: Context): String {
         val service = getServiceTelephonyManager(context)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            return service.imei
+            val imei = service.imei
+            return if (imei.isNotEmpty()) imei else throw IMEIException("IMEI is not available on ${Build.VERSION.SDK_INT}")
         } else {
             throw ServiceException("Unable to load imei device for sak version ${Build.VERSION.SDK_INT}")
         }
@@ -57,9 +56,11 @@ object DeviceHelper {
 
     @Suppress("DEPRECATION")
     @SuppressLint("HardwareIds")
-    fun getDeviceIdOrTrhow(context: Context): String {
+    fun getDeviceIdOrThrow(context: Context): String {
         val service = getServiceTelephonyManager(context)
-        return service.deviceId
+        val deviceID = service.deviceId
+        return if (deviceID.isNotEmpty()) deviceID; else throw DeviceIdException("Device ID is not available on ${Build.VERSION.SDK_INT}")
+
     }
 
     fun getDeviceIdOrDefault(context: Context, default: String): String {
@@ -67,6 +68,16 @@ object DeviceHelper {
             getIMEIOrThrow(context)
         } catch (e: Exception) {
             default
+        }
+    }
+
+    fun getIMEIorDeviceID(context: Context, default: String): String {
+        val imei = getIMEIOrDefault(context, "")
+        return if (imei.isEmpty()) {
+            val deviceId = getDeviceIdOrDefault(context, "")
+            if (deviceId.isEmpty()) default else deviceId
+        } else {
+            imei
         }
     }
 }
