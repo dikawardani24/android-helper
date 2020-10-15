@@ -1,6 +1,7 @@
 package digital.klik.helper.api
 
 import android.content.Context
+import digital.klik.helper.api.config.RetrofitConfig
 import digital.klik.helper.api.exception.TimeoutException
 import digital.klik.helper.api.extension.installProviderIfNeeded
 import digital.klik.helper.config.EnvironmentConfig
@@ -17,11 +18,18 @@ import javax.net.ssl.SSLSocketFactory
 import javax.net.ssl.X509TrustManager
 
 @Suppress("MemberVisibilityCanBePrivate", "unused")
-class ApiClient(private val baseUrl: String) {
+class ApiClient {
+    private val baseUrl: String
     private var retrofit: Retrofit? = null
     private val okHttpClientBuilder = OkHttpClient.Builder()
-    private val retrofitBuilder: Retrofit.Builder = Retrofit.Builder()
-        .baseUrl(baseUrl)
+
+    constructor(baseUrl: String) {
+        this.baseUrl = baseUrl
+    }
+
+    constructor(retrofitConfig: RetrofitConfig) {
+        baseUrl = if(EnvironmentConfig.isDebuggingMode()) retrofitConfig.debugUrl else retrofitConfig.productionUrl
+    }
 
     private fun validateTimeout(timeout: Long) {
         if (timeout <= 0) {
