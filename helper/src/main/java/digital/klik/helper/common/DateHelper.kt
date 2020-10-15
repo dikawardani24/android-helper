@@ -89,7 +89,7 @@ object DateHelper {
     }
 
     fun parse(dateInString: String, pattern: String): Date? {
-        return parse(dateInString, pattern)
+        return parse(dateInString, pattern, Locale.getDefault())
     }
 
     fun parse(dateInString: String): Date? {
@@ -153,5 +153,9 @@ object DateHelper {
             second = todayCalendar.get(Calendar.SECOND),
             milliSecond = todayCalendar.get(Calendar.MILLISECOND)
         )
+    }
+
+    fun parse(timeStamp: Long): Date {
+        return Date(timeStamp)
     }
 }
