@@ -28,8 +28,4 @@ class KlikDigitalApplication : MultiDexApplication() {
             preferenceName = preferenceName
         )
     }
-
-    companion object {
-        private val TAG = KlikDigitalApplication::class.simpleName
-    }
 }
