@@ -1,20 +1,38 @@
 package digital.klik.helper.sharedPreference
 
-import digital.klik.helper.sharedPreference.valueLoader.ValueLoader
-
 interface SharePreferenceProvider {
 
     fun remove(key: String)
 
     fun store(key: String, value: Any)
 
-    fun getStringValueLoader(key: String): ValueLoader<String>
+    fun getString(key: String, default: String?): String?
 
-    fun getIntValueLoader(key: String): ValueLoader<Int>
+    fun getStringOrEmpty(key: String): String
 
-    fun getLongValueLoader(key: String): ValueLoader<Long>
+    fun getStringOrThrow(key: String): String
 
-    fun getFloatValueLoader(key: String): ValueLoader<Float>
+    fun getInt(key: String, default: Int?): Int?
 
-    fun getStringSetValueLoader(key: String): ValueLoader<Set<String>>
+    fun getIntOrEmpty(key: String): Int
+
+    fun getIntOrThrow(key: String): Int
+
+    fun getFloat(key: String, default: Float?): Float?
+
+    fun getFloatOrEmpty(key: String): Float
+
+    fun getFloatOrThrow(key: String): Float
+
+    fun getLong(key: String, default: Long?): Long?
+
+    fun getLongOrEmpty(key: String): Long
+
+    fun getLongOrThrow(key: String): Long
+
+    fun getStringSet(key: String, default: Set<String>?): Set<String>?
+
+    fun getStringSetOrEmpty(key: String): Set<String>
+
+    fun getStringSetOrThrow(key: String): Set<String>
 }

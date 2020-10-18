@@ -4,11 +4,10 @@ import android.content.SharedPreferences
 import digital.klik.helper.sharedPreference.exception.SharedPreferenceException
 
 abstract class BaseValueLoader<T>(
-    protected val sharedPreferences: SharedPreferences,
-    protected val key: String
+    protected val sharedPreferences: SharedPreferences
 ): ValueLoader<T> {
 
-    protected fun produceErrorNoData(): SharedPreferenceException {
+    protected fun produceErrorNoData(key: String): SharedPreferenceException {
         return SharedPreferenceException(
             "Data for key $key doesn't exist"
         )

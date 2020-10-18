@@ -1,0 +1,54 @@
+package digital.klik.helper.sharedPreference.datasource
+
+import androidx.test.platform.app.InstrumentationRegistry
+import digital.klik.helper.common.extension.logDebug
+import digital.klik.helper.sharedPreference.SharePreferenceProvider
+import digital.klik.helper.sharedPreference.SharePreferenceProviderImpl
+import digital.klik.helper.sharedPreference.exception.SharedPreferenceException
+import org.junit.Assert.assertTrue
+import org.junit.Test
+
+class JsonSharedPreferenceDataSourceTest {
+    data class SampleData(var firstName: String,
+                          var lastName: String,
+                          var salary: Double)
+
+    class SampleDataDataSource(
+        provider: SharePreferenceProvider
+    ): JsonSharedPreferenceDataSource<SampleData>(provider, SampleData::class.java)
+
+    private val appContext = InstrumentationRegistry.getInstrumentation().targetContext
+    private val provider: SharePreferenceProvider = SharePreferenceProviderImpl(appContext, "dika")
+    private val dataSource = SampleDataDataSource(provider)
+
+    @Test
+    fun store() {
+        val sampleData = SampleData(
+            firstName = "Dika",
+            lastName = "Wardani",
+            salary = 90000000.0
+        )
+
+        dataSource.store(sampleData)
+        try {
+            val saved = dataSource.getStoredData()
+            logDebug("sample : $sampleData, saved: $saved")
+            assertTrue(sampleData == saved)
+        } catch (e: Exception) {
+            logDebug("${e.message}")
+            assertTrue(e is SharedPreferenceException)
+        }
+    }
+
+    @Test
+    fun getStoredData() {
+    }
+
+    @Test
+    fun getStoredDataOrNull() {
+    }
+
+    @Test
+    fun clearStoredData() {
+    }
+}
