@@ -1,11 +1,11 @@
 package digital.klik.helper.sharedPreference.extension
 
-import android.app.Activity
 import android.content.Context
+import androidx.fragment.app.Fragment
 import digital.klik.helper.sharedPreference.SharePreferenceProvider
 import digital.klik.helper.sharedPreference.SharePreferenceProviderImpl
 
-fun Activity.getSharedPreferenceProvider(preferenceName: String, mode: Int): SharePreferenceProvider {
+fun Context.getSharedPreferenceProvider(preferenceName: String, mode: Int): SharePreferenceProvider {
     return SharePreferenceProviderImpl(
         context = this,
         mode = mode,
@@ -13,6 +13,18 @@ fun Activity.getSharedPreferenceProvider(preferenceName: String, mode: Int): Sha
     )
 }
 
-fun Activity.getPrivateSharedPreferenceProvider(preferenceName: String): SharePreferenceProvider {
+fun Context.getPrivateSharedPreferenceProvider(preferenceName: String): SharePreferenceProvider {
+    return getSharedPreferenceProvider(preferenceName, Context.MODE_PRIVATE)
+}
+
+fun Fragment.getSharedPreferenceProvider(preferenceName: String, mode: Int): SharePreferenceProvider {
+    return SharePreferenceProviderImpl(
+        context = requireContext(),
+        mode = mode,
+        preferenceName = preferenceName
+    )
+}
+
+fun Fragment.getPrivateSharedPreferenceProvider(preferenceName: String): SharePreferenceProvider {
     return getSharedPreferenceProvider(preferenceName, Context.MODE_PRIVATE)
 }

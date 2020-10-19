@@ -5,6 +5,8 @@ import digital.klik.helper.common.extension.logDebug
 import digital.klik.helper.sharedPreference.SharePreferenceProvider
 import digital.klik.helper.sharedPreference.SharePreferenceProviderImpl
 import digital.klik.helper.sharedPreference.exception.SharedPreferenceException
+import digital.klik.helper.sharedPreference.extension.getPrivateSharedPreferenceProvider
+import digital.klik.helper.sharedPreference.extension.getSharedPreferenceProvider
 import org.junit.Assert.assertTrue
 import org.junit.Test
 
@@ -18,8 +20,8 @@ class JsonSharedPreferenceDataSourceTest {
     ): JsonSharedPreferenceDataSource<Employee>(provider, Employee::class.java)
 
     private val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-    private val provider: SharePreferenceProvider = SharePreferenceProviderImpl(appContext, "dika")
-    private val dataSource = EmployeeDataSource(provider)
+    private val provider = appContext.getPrivateSharedPreferenceProvider("dika")
+    private val dataSource: SharedPreferenceDataSource<Employee> = EmployeeDataSource(provider)
 
     @Test
     fun store() {
