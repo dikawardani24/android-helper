@@ -13,13 +13,13 @@ class JsonSharedPreferenceDataSourceTest {
                         var lastName: String,
                         var salary: Double)
 
-    class SampleDataDataSource(
+    class EmployeeDataSource(
         provider: SharePreferenceProvider
     ): JsonSharedPreferenceDataSource<Employee>(provider, Employee::class.java)
 
     private val appContext = InstrumentationRegistry.getInstrumentation().targetContext
     private val provider: SharePreferenceProvider = SharePreferenceProviderImpl(appContext, "dika")
-    private val dataSource = SampleDataDataSource(provider)
+    private val dataSource = EmployeeDataSource(provider)
 
     @Test
     fun store() {
