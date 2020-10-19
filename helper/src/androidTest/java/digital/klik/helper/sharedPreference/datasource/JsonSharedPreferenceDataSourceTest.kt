@@ -9,13 +9,13 @@ import org.junit.Assert.assertTrue
 import org.junit.Test
 
 class JsonSharedPreferenceDataSourceTest {
-    data class SampleData(var firstName: String,
-                          var lastName: String,
-                          var salary: Double)
+    data class Employee(var firstName: String,
+                        var lastName: String,
+                        var salary: Double)
 
     class SampleDataDataSource(
         provider: SharePreferenceProvider
-    ): JsonSharedPreferenceDataSource<SampleData>(provider, SampleData::class.java)
+    ): JsonSharedPreferenceDataSource<Employee>(provider, Employee::class.java)
 
     private val appContext = InstrumentationRegistry.getInstrumentation().targetContext
     private val provider: SharePreferenceProvider = SharePreferenceProviderImpl(appContext, "dika")
@@ -23,7 +23,7 @@ class JsonSharedPreferenceDataSourceTest {
 
     @Test
     fun store() {
-        val sampleData = SampleData(
+        val sampleData = Employee(
             firstName = "Dika",
             lastName = "Wardani",
             salary = 90000000.0
