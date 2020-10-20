@@ -33,7 +33,7 @@ open class JsonSharedPreferenceDataSource<T: Any>(
     override fun clearStoredData() {
         val dataInJson = sharePreferenceProvider.getStringOrEmpty(key)
         if (dataInJson.isNotEmpty()) {
-            sharePreferenceProvider.store(key, "")
+            sharePreferenceProvider.remove(key)
         }
     }
 }

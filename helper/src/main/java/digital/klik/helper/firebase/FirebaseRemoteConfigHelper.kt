@@ -8,27 +8,31 @@ import digital.klik.helper.firebase.exception.FirebaseException
 
 object FirebaseRemoteConfigHelper {
 
+    fun getInstance(
+        @XmlRes resConfigDefaults: Int,
+        additionalSetting: FirebaseRemoteConfigSettings.() -> Unit = {}
+    ): FirebaseRemoteConfig {
+        val settings = FirebaseRemoteConfigSettings.Builder().build()
+        settings.additionalSetting()
+        return FirebaseRemoteConfig.getInstance().apply {
+            setConfigSettingsAsync(settings)
+            setDefaultsAsync(resConfigDefaults)
+        }
+    }
+
     fun fetchRemoteConfig(
         minimumFetchInterval: Long,
-        @XmlRes resCinfigDefaults: Int,
-        additionalSetting: (builder: FirebaseRemoteConfigSettings.Builder) -> Unit,
+        remoteConfig: FirebaseRemoteConfig,
         resultHandler: (result: Result<FirebaseRemoteConfig>) -> Unit
     ) {
-        val builder = FirebaseRemoteConfigSettings.Builder()
-        additionalSetting.invoke(builder)
-
-        val remoteConfig = FirebaseRemoteConfig.getInstance().apply {
-            val settings = builder.build()
-            setConfigSettingsAsync(settings)
-            setDefaultsAsync(resCinfigDefaults)
-        }
-
         val task = remoteConfig.fetch(minimumFetchInterval)
         task.addOnCompleteListener {
             if (it.isSuccessful) {
                 resultHandler(Result.Success(remoteConfig))
             } else {
-                val error = FirebaseException("Unable to load config from firebase cause by task the task is not successful")
+                val taskError = it.exception
+                val messageError = taskError?.message ?: "Unable to load config from firebase cause by task the task is not successful"
+                val error = FirebaseException(messageError, taskError)
                 resultHandler(Result.Failure(error))
             }
         }.addOnFailureListener {

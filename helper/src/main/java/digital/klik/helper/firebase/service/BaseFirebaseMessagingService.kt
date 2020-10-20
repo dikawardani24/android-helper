@@ -6,15 +6,15 @@ import digital.klik.helper.common.extension.logDebug
 
 abstract class BaseFirebaseMessagingService : FirebaseMessagingService() {
 
+    protected abstract fun onHandleData(data: Map<String, String>)
+    protected abstract fun onHandleNotification(notification: RemoteMessage.Notification)
+
     override fun onNewToken(newToken: String) {
         super.onNewToken(newToken)
         logDebug("New Token : $newToken")
     }
 
-    protected abstract fun onHandleData(data: Map<String, String>)
-    protected abstract fun onHandleNotification(notification: RemoteMessage.Notification)
-
-    override fun onMessageReceived(remoteMessage: RemoteMessage) {
+    final override fun onMessageReceived(remoteMessage: RemoteMessage) {
         super.onMessageReceived(remoteMessage)
 
         val notification = remoteMessage.notification

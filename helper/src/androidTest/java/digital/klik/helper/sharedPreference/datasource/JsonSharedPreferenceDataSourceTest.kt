@@ -29,8 +29,8 @@ class JsonSharedPreferenceDataSourceTest {
             salary = 90000000.0
         )
 
-        dataSource.store(sampleData)
         try {
+            dataSource.store(sampleData)
             val saved = dataSource.getStoredData()
             logDebug("sample : $sampleData, saved: $saved")
             assertTrue(sampleData == saved)
