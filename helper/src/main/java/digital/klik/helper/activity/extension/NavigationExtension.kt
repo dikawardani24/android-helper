@@ -3,6 +3,7 @@
 package digital.klik.helper.activity.extension
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import kotlin.reflect.KClass
 
@@ -28,7 +29,7 @@ fun Activity.setActivityResult(resultCode: Int, kClass: KClass<*>, block: Intent
     finish()
 }
 
-fun Activity.startActivity(kClass: KClass<*>, block: Intent.() -> Unit = {}) {
+fun Context.startActivity(kClass: KClass<*>, block: Intent.() -> Unit = {}) {
     val intent = Intent(this, kClass.java)
     block(intent)
     startActivity(intent)
