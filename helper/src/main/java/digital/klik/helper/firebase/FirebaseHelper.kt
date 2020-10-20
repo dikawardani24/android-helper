@@ -14,5 +14,4 @@ object FirebaseHelper {
             throw FirebaseException(e.message, e)
         }
     }
-
 }
