@@ -37,7 +37,7 @@ class SharePreferenceProviderImpl(
             is Float -> editor.putFloat(key, value)
             is Long -> editor.putLong(key, value)
             is Set<*> -> {
-                InstanceHelper.tryCast<Set<String>>(value) {
+                InstanceHelper.cast<Set<String>>(value) {
                     editor.putStringSet(key, this)
                 }
             }

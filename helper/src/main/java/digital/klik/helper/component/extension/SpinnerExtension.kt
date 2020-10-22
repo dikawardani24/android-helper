@@ -11,7 +11,7 @@ fun Spinner.getSelectedItemInString(): String {
 fun Spinner.setSelectedItem(selectedValue: String) {
     val spinnerAdapter = adapter
     if (spinnerAdapter is ArrayAdapter<*>) {
-        InstanceHelper.tryCast<ArrayAdapter<String>>(spinnerAdapter) {
+        InstanceHelper.cast<ArrayAdapter<String>>(spinnerAdapter) {
             val position = getPosition(selectedValue)
             setSelection(position)
         }
