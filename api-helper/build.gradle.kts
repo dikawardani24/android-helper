@@ -44,7 +44,6 @@ dependencies {
 
     implementation (libs.rxJava)
     implementation( libs.rxJavaAndroid)
-
     implementation (libs.gson)
     implementation (libs.retrofit)
     implementation (libs.converterGson)
@@ -52,6 +51,8 @@ dependencies {
     implementation (libs.adapterRxJava2)
     implementation (libs.loggingInterceptor)
     implementation (libs.okhttpUrlConnection)
+    debugImplementation(libs.chuckerDebug)
+    releaseImplementation(libs.chuckerRelease)
 
     api(project(":core-helper"))
     api(project(":data-helper"))

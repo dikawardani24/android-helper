@@ -1,6 +1,7 @@
 package dika.helper.api
 
 import android.content.Context
+import com.chuckerteam.chucker.api.ChuckerInterceptor
 import dika.helper.api.config.RetrofitConfig
 import dika.helper.api.exception.TimeoutException
 import dika.helper.core.config.EnvironmentConfig
@@ -93,11 +94,18 @@ class ApiClient {
     private fun initializeRetrofit(context: Context): Retrofit {
         if (EnvironmentConfig.isDebuggingMode()) {
             val interceptor = HttpLoggingInterceptor().apply { level = HttpLoggingInterceptor.Level.BODY }
-
             val interceptorAlreadyExist = okHttpClientBuilder.interceptors().contains(interceptor)
             if (!interceptorAlreadyExist) {
                 okHttpClientBuilder.addInterceptor {
                     interceptor.intercept(it)
+                }
+            }
+
+            val chucker = ChuckerInterceptor(context)
+            val chuckerAlreadyExist = okHttpClientBuilder.interceptors().contains(chucker)
+            if (!chuckerAlreadyExist) {
+                okHttpClientBuilder.addInterceptor {
+                    chucker.intercept(it)
                 }
             }
         }

@@ -19,7 +19,7 @@ abstract class DefaultBackableActivity : BaseActivity() {
         upIndicator = drawable
     }
 
-    final override fun kDigiOnCreate(savedInstanceState: Bundle?) {
+    final override fun dikaOnCreate(savedInstanceState: Bundle?) {
         kDigiOnCreateUI(savedInstanceState)
 
         supportActionBar?.run {

@@ -22,6 +22,7 @@ appCompat = "1.7.0"
 coreKtx = "1.15.0"
 agp = "8.8.2"
 kotlin = "2.1.0"
+chucker = "4.1.0"
 
 [libraries]
 firebaseAnalytics = { group = "com.google.firebase", name = "firebase-analytics", version.ref = "firebaseAnalytics" }
@@ -52,6 +53,8 @@ junitAndroidX = { group = "androidx.test.ext", name = "junit", version.ref = "ju
 recyclerView = { group = "androidx.recyclerview", name = "recyclerview", version.ref = "recyclerView" }
 appCompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appCompat" }
 coreKtx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+chuckerDebug = { group = "com.github.chuckerteam.chucker", name = "library", version.ref = "chucker" }
+chuckerRelease = { group = "com.github.chuckerteam.chucker", name = "library-no-op", version.ref = "chucker" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
