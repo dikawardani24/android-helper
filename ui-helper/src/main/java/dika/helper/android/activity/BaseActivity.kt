@@ -2,7 +2,7 @@ package dika.helper.android.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import dika.helper.android.api.extension.installProviderIfNeeded
+import dika.helper.android.security.extension.installProviderIfNeeded
 
 abstract class BaseActivity : AppCompatActivity() {
 

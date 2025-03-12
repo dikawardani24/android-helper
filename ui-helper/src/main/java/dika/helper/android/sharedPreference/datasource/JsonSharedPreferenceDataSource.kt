@@ -1,9 +1,9 @@
 package dika.helper.android.sharedPreference.datasource
 
-import dika.helper.android.api.extension.fromJson
-import dika.helper.android.api.extension.toJson
 import dika.helper.android.sharedPreference.SharePreferenceProvider
 import dika.helper.android.sharedPreference.exception.SharedPreferenceException
+import dika.helper.api.extension.fromJson
+import dika.helper.api.extension.toJson
 
 @Suppress("MemberVisibilityCanBePrivate", "unused")
 open class JsonSharedPreferenceDataSource<T: Any>(
