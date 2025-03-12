@@ -12,5 +12,7 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-include ':android-helper'
+include ':ui-helper'
+include ':data-helper'
+include ':core-helper'
 rootProject.name = "Android-Helper"
