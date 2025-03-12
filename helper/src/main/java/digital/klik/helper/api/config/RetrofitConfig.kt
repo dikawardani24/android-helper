@@ -1,4 +1,0 @@
-package digital.klik.helper.api.config
-
-data class RetrofitConfig(val debugUrl: String,
-                          val productionUrl: String)

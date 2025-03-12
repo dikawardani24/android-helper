@@ -1,0 +1,54 @@
+[versions]
+firebaseMessaging = "24.1.0"
+firebaseCore = "21.1.1"
+firebaseConfig = "22.1.0"
+playServicesAuth = "21.3.0"
+kotlinReflect = "2.1.0"
+rxJava = "3.1.5"
+rxJavaAndroid = "3.0.2"
+room = "2.6.1"
+okhttp = "4.2.1"
+retrofit = "2.9.0"
+gson = "2.11.0"
+firebaseAnalytics = "22.3.0"
+multidex = "2.0.1"
+material = "1.12.0"
+mockito = "3.12.4"
+espressoCore = "3.6.1"
+junit = "4.13.2"
+junitAndroidX = "1.2.1"
+recyclerView = "1.4.0"
+appCompat = "1.7.0"
+coreKtx = "1.15.0"
+
+[libraries]
+firebaseAnalytics = { group = "com.google.firebase", name = "firebase-analytics", version.ref = "firebaseAnalytics" }
+firebaseMessaging = { group = "com.google.firebase", name = "firebase-messaging", version.ref = "firebaseMessaging" }
+firebaseCore = { group = "com.google.firebase", name = "firebase-core", version.ref = "firebaseCore" }
+firebaseConfig = { group = "com.google.firebase", name = "firebase-config", version.ref = "firebaseConfig" }
+playServicesAuth = { group = "com.google.android.gms", name = "play-services-auth", version.ref = "playServicesAuth" }
+kotlinReflect = { group = "org.jetbrains.kotlin", name = "kotlin-reflect", version.ref = "kotlinReflect" }
+rxJava = { group = "io.reactivex.rxjava3", name = "rxjava", version.ref = "rxJava" }
+rxJavaAndroid = { group = "io.reactivex.rxjava3", name = "rxandroid", version.ref = "rxJavaAndroid" }
+roomRuntime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
+roomCompiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
+roomKtx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
+roomRxJava = { group = "androidx.room", name = "room-rxjava2", version.ref = "room" }
+loggingInterceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp" }
+okhttpUrlConnection = { group = "com.squareup.okhttp3", name = "okhttp-urlconnection", version.ref = "okhttp" }
+retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
+converterGson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofit" }
+converterScalars = { group = "com.squareup.retrofit2", name = "converter-scalars", version.ref = "retrofit" }
+adapterRxJava2 = { group = "com.squareup.retrofit2", name = "adapter-rxjava2", version.ref = "retrofit" }
+gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
+multidex = { group = "androidx.multidex", name = "multidex", version.ref = "multidex" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+mockito = { group = "org.mockito", name = "mockito-core", version.ref = "mockito" }
+espressoCore = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+junitAndroidX = { group = "androidx.test.ext", name = "junit", version.ref = "junitAndroidX" }
+recyclerView = { group = "androidx.recyclerview", name = "recyclerview", version.ref = "recyclerView" }
+appCompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appCompat" }
+coreKtx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+
+[plugins]

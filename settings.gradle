@@ -1,2 +1,16 @@
-include ':helper'
-rootProject.name = "Klik Digital Android Helper"
+pluginManagement {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+include ':android-helper'
+rootProject.name = "Android-Helper"
