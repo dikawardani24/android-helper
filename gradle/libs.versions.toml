@@ -20,7 +20,7 @@ junitAndroidX = "1.2.1"
 recyclerView = "1.4.0"
 appCompat = "1.7.0"
 coreKtx = "1.15.0"
-agp = "8.8.1"
+agp = "8.8.2"
 kotlin = "2.1.0"
 
 [libraries]
@@ -57,3 +57,4 @@ coreKtx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" 
 android-application = { id = "com.android.application", version.ref = "agp" }
 android-library = { id = "com.android.library", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-parcelize = { id = "kotlin-parcelize" }

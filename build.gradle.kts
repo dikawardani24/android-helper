@@ -1,3 +1,4 @@
+import com.android.build.gradle.internal.tasks.factory.registerTask
 
 plugins {
     alias(libs.plugins.android.library) apply false
@@ -5,6 +6,4 @@ plugins {
     alias(libs.plugins.android.application) apply false
 }
 
-tasks.register('clean', Delete) {
-    delete rootProject.layout.buildDirectory
-}
+tasks.registerTask("clean", Delete::class.java)
