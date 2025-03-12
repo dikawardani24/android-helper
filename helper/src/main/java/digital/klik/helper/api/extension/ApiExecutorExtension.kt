@@ -6,7 +6,7 @@ import digital.klik.helper.api.ApiExecutorHelper
 import io.reactivex.Single
 import io.reactivex.observers.DisposableSingleObserver
 
-fun <T> ViewModel.singleExecute(single: Single<T>,
+fun <T: Any> ViewModel.singleExecute(single: Single<T>,
                                 handler: (result: Result<T>) -> Unit): DisposableSingleObserver<T> {
     return ApiExecutorHelper.singleExecute(
         single = single,

@@ -39,7 +39,7 @@ object ApiExecutorHelper {
     }
 
 
-    fun <T> singleExecute(single: Single<T>, handler: (result: Result<T>) -> Unit): DisposableSingleObserver<T> {
+    fun <T: Any> singleExecute(single: Single<T>, handler: (result: Result<T>) -> Unit): DisposableSingleObserver<T> {
         return single.subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeWith(object : DisposableSingleObserver<T>() {
@@ -53,6 +53,7 @@ object ApiExecutorHelper {
                     val result = Result.Failure<T>(error)
                     handler(result)
                 }
+
             })
     }
 
