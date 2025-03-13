@@ -4,12 +4,13 @@ package dika.helper.android.permission
 
 import android.app.Activity
 import android.content.pm.PackageManager
+import androidx.core.content.ContextCompat
 import dika.helper.core.exception.IllegalArgsException
 import dika.helper.core.extension.logDebug
 
 fun Activity.checkHasPermission(permission: String): Boolean {
     if (permission.isEmpty()) throw IllegalArgsException("Permission cannot be empty")
-    val result = checkSelfPermission(permission)
+    val result = ContextCompat.checkSelfPermission(this, permission)
     val granted = result == PackageManager.PERMISSION_GRANTED
     logDebug("Permission : $permission, isGranted : $granted")
     return granted
