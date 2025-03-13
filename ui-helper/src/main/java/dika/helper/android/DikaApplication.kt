@@ -6,7 +6,7 @@ import androidx.multidex.MultiDexApplication
 import dika.helper.android.sharedPreference.SharePreferenceProvider
 import dika.helper.android.sharedPreference.SharePreferenceProviderImpl
 
-class KlikDigitalApplication : MultiDexApplication() {
+class DikaApplication : MultiDexApplication() {
 
     override fun onCreate() {
         super.onCreate()

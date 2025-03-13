@@ -4,15 +4,15 @@ import android.app.Activity
 import androidx.fragment.app.Fragment
 import dika.helper.core.exception.AppException
 
-fun Activity.getKDigiApplication(): KlikDigitalApplication {
+fun Activity.getDikaApplication(): DikaApplication {
     val app = application
-    if (app is KlikDigitalApplication) {
+    if (app is DikaApplication) {
         return app
     } else {
-        throw AppException("The application container of ${app::class.simpleName} is not type of ${KlikDigitalApplication::class.simpleName}")
+        throw AppException("The application container of ${app::class.simpleName} is not type of ${DikaApplication::class.simpleName}")
     }
 }
 
-fun Fragment.getKDigiApplication(): KlikDigitalApplication {
-    return requireActivity().getKDigiApplication()
+fun Fragment.getDikaApplication(): DikaApplication {
+    return requireActivity().getDikaApplication()
 }
