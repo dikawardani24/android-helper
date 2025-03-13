@@ -36,7 +36,7 @@ rxJavaAndroid = { group = "io.reactivex.rxjava3", name = "rxandroid", version.re
 roomRuntime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
 roomCompiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
 roomKtx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
-roomRxJava = { group = "androidx.room", name = "room-rxjava2", version.ref = "room" }
+roomRxJava = { group = "androidx.room", name = "room-rxjava3", version.ref = "room" }
 loggingInterceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp" }
 okhttpUrlConnection = { group = "com.squareup.okhttp3", name = "okhttp-urlconnection", version.ref = "okhttp" }
 retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }

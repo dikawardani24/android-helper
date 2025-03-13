@@ -2,8 +2,8 @@ package dika.helper.database.repository
 
 import dika.helper.database.CrudDao
 import dika.helper.database.exception.RoomException
-import io.reactivex.Single
 import dika.helper.core.Result
+import io.reactivex.rxjava3.core.Single
 
 class CrudRepositoryImpl<T>(
     private val crudDao: CrudDao<T>
