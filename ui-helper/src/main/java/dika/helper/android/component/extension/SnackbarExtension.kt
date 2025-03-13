@@ -6,20 +6,13 @@ import dika.helper.android.component.config.SnackBarConfig
 import dika.helper.android.component.constant.SnackBarDuration
 import dika.helper.android.component.listener.SnackBarListener
 
-fun showSnackBar(
-    view: View,
+fun View.showSnackBar(
     message: String,
     snackBarDuration: SnackBarDuration,
     snackBarConfig: SnackBarConfig? = null,
     action: SnackBarListener? = null
 ) {
-    val duration = when (snackBarDuration) {
-        SnackBarDuration.LONG -> Snackbar.LENGTH_LONG
-        SnackBarDuration.SHORT -> Snackbar.LENGTH_SHORT
-        SnackBarDuration.INDEFINITE -> Snackbar.LENGTH_INDEFINITE
-    }
-
-    val snackBar = Snackbar.make(view, message, duration)
+    val snackBar = Snackbar.make(this, message, snackBarDuration.value)
 
     if (action != null) {
         snackBar.setAction(action.actionTitle()) {
@@ -37,9 +30,8 @@ fun showSnackBar(
     snackBar.show()
 }
 
-fun showShortSnackBar(view: View, message: String, snackBarConfig: SnackBarConfig? = null, action: SnackBarListener? = null) {
+fun View.showShortSnackBar(message: String, snackBarConfig: SnackBarConfig? = null, action: SnackBarListener? = null) {
     showSnackBar(
-        view = view,
         message = message,
         snackBarDuration = SnackBarDuration.SHORT,
         snackBarConfig = snackBarConfig,
@@ -47,9 +39,8 @@ fun showShortSnackBar(view: View, message: String, snackBarConfig: SnackBarConfi
     )
 }
 
-fun showLongSnackBar(view: View, message: String, snackBarConfig: SnackBarConfig? = null, action: SnackBarListener? = null) {
+fun View.showLongSnackBar(message: String, snackBarConfig: SnackBarConfig? = null, action: SnackBarListener? = null) {
     showSnackBar(
-        view = view,
         message = message,
         snackBarDuration = SnackBarDuration.LONG,
         snackBarConfig = snackBarConfig,
@@ -57,9 +48,8 @@ fun showLongSnackBar(view: View, message: String, snackBarConfig: SnackBarConfig
     )
 }
 
-fun showIndefinite(view: View, message: String, snackBarConfig: SnackBarConfig? = null, action: SnackBarListener? = null) {
+fun View.showIndefinite(message: String, snackBarConfig: SnackBarConfig? = null, action: SnackBarListener? = null) {
     showSnackBar(
-        view = view,
         message = message,
         snackBarDuration = SnackBarDuration.INDEFINITE,
         snackBarConfig = snackBarConfig,
