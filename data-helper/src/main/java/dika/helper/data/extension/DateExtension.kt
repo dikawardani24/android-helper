@@ -1,8 +1,13 @@
 package dika.helper.data.extension
 
 import dika.helper.data.DateHelper
+import java.util.Calendar
 import java.util.Date
 import java.util.Locale
+
+val Calendar.year get() = get(Calendar.YEAR)
+val Calendar.month get() = get(Calendar.MONTH)
+val Calendar.dayOfMonth get() = get(Calendar.DAY_OF_MONTH)
 
 fun Date.format(pattern: String, locale: Locale): String {
     return DateHelper.format(this, pattern, locale)
