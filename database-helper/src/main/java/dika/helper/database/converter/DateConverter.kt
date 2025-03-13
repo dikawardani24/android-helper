@@ -1,4 +1,4 @@
-package dika.helper.android.room.converter
+package dika.helper.database.converter
 
 import androidx.room.TypeConverter
 import java.util.Date

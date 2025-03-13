@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "dika.helper.api"
+    namespace = "dika.helper.database"
 
     defaultConfig {
         minSdk = ProjectConfig.MIN_SDK
@@ -32,7 +32,6 @@ android {
     }
 }
 
-
 dependencies {
 
     implementation(libs.coreKtx)
@@ -42,18 +41,12 @@ dependencies {
     androidTestImplementation(libs.junitAndroidX)
     androidTestImplementation(libs.espressoCore)
 
-    implementation (libs.rxJava)
-    implementation( libs.rxJavaAndroid)
-    implementation (libs.gson)
-    implementation (libs.retrofit)
-    implementation (libs.converterGson)
-    implementation (libs.converterScalars)
-    implementation (libs.adapterRxJava2)
-    implementation (libs.loggingInterceptor)
-    implementation (libs.okhttpUrlConnection)
-    debugImplementation(libs.chuckerDebug)
-    releaseImplementation(libs.chuckerRelease)
+    annotationProcessor (libs.roomCompiler)
+    annotationProcessor (libs.roomKtx)
+    implementation (libs.roomRuntime)
+    implementation (libs.roomRxJava)
+    implementation (libs.kotlinReflect)
 
     api(project(":core-helper"))
-    api(project(":data-helper"))
+
 }

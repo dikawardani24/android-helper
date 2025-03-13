@@ -1,4 +1,4 @@
-package dika.helper.android.room.exception
+package dika.helper.database.exception
 
 import dika.helper.core.exception.AppException
 

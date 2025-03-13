@@ -1,4 +1,4 @@
-package dika.helper.android.room
+package dika.helper.database
 
 import androidx.room.Delete
 import androidx.room.Insert

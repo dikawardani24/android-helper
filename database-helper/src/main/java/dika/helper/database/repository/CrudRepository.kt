@@ -1,4 +1,4 @@
-package dika.helper.android.room.repository
+package dika.helper.database.repository
 
 import dika.helper.core.Result
 import io.reactivex.Single

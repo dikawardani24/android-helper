@@ -1,9 +1,9 @@
-package dika.helper.android.room.repository
+package dika.helper.database.repository
 
-import dika.helper.core.Result
-import dika.helper.android.room.CrudDao
-import dika.helper.android.room.exception.RoomException
+import dika.helper.database.CrudDao
+import dika.helper.database.exception.RoomException
 import io.reactivex.Single
+import dika.helper.core.Result
 
 class CrudRepositoryImpl<T>(
     private val crudDao: CrudDao<T>
