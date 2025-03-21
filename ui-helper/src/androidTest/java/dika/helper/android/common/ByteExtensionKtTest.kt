@@ -2,8 +2,8 @@ package dika.helper.android.common
 
 import dika.helper.core.constant.ByteUnit
 import dika.helper.core.extension.logDebug
-import dika.helper.data.extension.toByte
-import dika.helper.data.extension.toKiloByte
+import dika.helper.core.extension.toByte
+import dika.helper.core.extension.toKiloByte
 import org.junit.Assert.assertTrue
 import org.junit.Test
 

@@ -2,7 +2,7 @@ package dika.helper.api
 
 import dika.helper.api.exception.CacheException
 import dika.helper.core.constant.ByteUnit
-import dika.helper.data.extension.toByte
+import dika.helper.core.extension.toByte
 import dika.helper.core.model.ByteSize
 import okhttp3.Cache
 import java.io.File
