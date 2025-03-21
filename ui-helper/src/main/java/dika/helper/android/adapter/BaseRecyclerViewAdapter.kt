@@ -30,27 +30,30 @@ abstract class BaseRecyclerViewAdapter<T, VH: BaseViewHolder<T>>: RecyclerView.A
 
     fun addItem(item: T) {
         items.add(item)
-        notifyDataSetChanged()
+        notifyItemInserted(items.indexOf(item))
     }
 
     fun addItems(items: List<T>) {
-        this.items.addAll(items)
-        notifyDataSetChanged()
+        items.forEach { item ->
+            addItem(item)
+        }
     }
 
     fun removeItem(item: T) {
+        val pos = items.indexOf(item)
         items.remove(item)
-        notifyDataSetChanged()
+        notifyItemRemoved(pos)
     }
 
     fun removeItems(items: List<T>) {
-        this.items.removeAll(items)
-        notifyDataSetChanged()
+        items.forEach { toRemoved ->
+            removeItem(toRemoved)
+        }
     }
 
     fun clearItems() {
         items.clear()
-        notifyDataSetChanged()
+        notifyItemRangeRemoved(0, items.size)
     }
 
     fun isEmpty(): Boolean {
