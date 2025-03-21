@@ -3,8 +3,8 @@ package dika.helper.android.dialog
 import android.app.TimePickerDialog
 import android.content.Context
 import dika.helper.android.dialog.listener.OnTimeSelectedListener
-import dika.helper.data.DateHelper
-import dika.helper.data.model.Time
+import dika.helper.core.DateHelper
+import dika.helper.core.model.Time
 
 object TimePickerDialogHelper {
 

@@ -1,7 +1,7 @@
 package dika.helper.android.common
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import dika.helper.data.NumberHelper
+import dika.helper.core.NumberHelper
 import dika.helper.core.extension.logDebug
 import org.junit.Assert.assertTrue
 import org.junit.Test

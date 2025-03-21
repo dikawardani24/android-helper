@@ -1,6 +1,6 @@
 package dika.helper.android.common
 
-import dika.helper.data.constant.ByteUnit
+import dika.helper.core.constant.ByteUnit
 import dika.helper.core.extension.logDebug
 import dika.helper.data.extension.toByte
 import dika.helper.data.extension.toKiloByte

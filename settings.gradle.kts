@@ -16,6 +16,11 @@ dependencyResolutionManagement {
     }
 }
 
-val modules = arrayOf(":api-helper", ":ui-helper", ":data-helper", ":core-helper", ":database-helper")
+val modules = arrayOf(
+    ":api-helper",
+    ":ui-helper",
+    ":core-helper",
+    ":database-helper"
+)
 include (*modules)
 rootProject.name = "Android-Helper"

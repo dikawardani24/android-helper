@@ -2,7 +2,7 @@ package dika.helper.api
 
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
-import dika.helper.data.constant.Pattern
+import dika.helper.core.constant.Pattern
 
 @Suppress("unused")
 object JSonHelper {

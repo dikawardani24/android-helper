@@ -55,5 +55,4 @@ dependencies {
     releaseImplementation(libs.chuckerRelease)
 
     api(project(":core-helper"))
-    api(project(":data-helper"))
 }

@@ -58,6 +58,5 @@ dependencies {
     testImplementation (libs.mockito)
 
     api(project(":core-helper"))
-    api(project(":data-helper"))
     api(project(":api-helper"))
 }
