@@ -10,3 +10,12 @@ fun View.setVisible(visible: Boolean) {
         visibility = newVisibility
     }
 }
+
+fun View.setHide(hide: Boolean) {
+    val currentVisibility = visibility
+    val newVisibility = if (hide) View.INVISIBLE else View.VISIBLE
+
+    if (currentVisibility != newVisibility) {
+        visibility = newVisibility
+    }
+}
