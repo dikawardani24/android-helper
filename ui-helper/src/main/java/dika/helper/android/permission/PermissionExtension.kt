@@ -3,12 +3,13 @@
 package dika.helper.android.permission
 
 import android.app.Activity
+import android.content.Context
 import android.content.pm.PackageManager
 import androidx.core.content.ContextCompat
 import dika.helper.core.exception.IllegalArgsException
 import dika.helper.core.extension.logDebug
 
-fun Activity.checkHasPermission(permission: String): Boolean {
+fun Context.checkHasPermission(permission: String): Boolean {
     if (permission.isEmpty()) throw IllegalArgsException("Permission cannot be empty")
     val result = ContextCompat.checkSelfPermission(this, permission)
     val granted = result == PackageManager.PERMISSION_GRANTED
@@ -16,7 +17,7 @@ fun Activity.checkHasPermission(permission: String): Boolean {
     return granted
 }
 
-fun Activity.checkHasPermissions(permissions: Array<out String>): Boolean {
+fun Context.checkHasPermissions(permissions: Array<out String>): Boolean {
     if (permissions.isEmpty()) throw IllegalArgsException("Permissions length must be greater than 0")
     permissions.forEach { permission ->
         if (!checkHasPermission(permission)) {
