@@ -5,7 +5,7 @@
  * Software distributed under the license .
  */
 
-package dika.helper.android.component.custom
+package dika.helper.android.component.custom.webview
 
 import android.annotation.TargetApi
 import android.content.Context

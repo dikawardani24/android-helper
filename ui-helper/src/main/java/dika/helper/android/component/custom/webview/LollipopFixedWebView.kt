@@ -1,4 +1,4 @@
-package dika.helper.android.component.custom
+package dika.helper.android.component.custom.webview
 
 import android.content.Context
 import android.content.res.Configuration
