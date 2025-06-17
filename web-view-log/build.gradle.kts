@@ -3,10 +3,11 @@ import dika.helper.gradle.ProjectConfig
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.parcelize)
 }
 
 android {
-    namespace = "dika.helper.database"
+    namespace = "dika.helper.android"
 
     defaultConfig {
         minSdk = ProjectConfig.MIN_SDK
@@ -41,12 +42,7 @@ dependencies {
     androidTestImplementation(libs.junitAndroidX)
     androidTestImplementation(libs.espressoCore)
 
-    annotationProcessor (libs.roomCompiler)
-    annotationProcessor (libs.roomKtx)
-    api (libs.roomRuntime)
-    api (libs.roomRxJava)
-    api (libs.kotlinReflect)
-
-    api(project(":core-helper"))
-
+    implementation(project(":ui-helper"))
+    implementation(project(":database-helper"))
+    implementation(project(":api-helper"))
 }

@@ -1,5 +1,8 @@
 @file:Suppress("UnstableApiUsage")
 
+include(":web-view-log")
+
+
 pluginManagement {
     repositories {
         google()

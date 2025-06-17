@@ -13,3 +13,10 @@ fun <T: Any> ViewModel.singleExecute(single: Single<T>,
         handler = handler
     )
 }
+
+fun <T: Any> Single<T>.execute(handler: (result: Result<T>) -> Unit): DisposableSingleObserver<T> {
+    return ApiExecutorHelper.singleExecute(
+        single = this,
+        handler = handler
+    )
+}
